@@ -1,0 +1,6 @@
+-cp src
+-cp samples
+-dce full
+-main Fib
+--hl bin/fib.hl
+--cmd hl bin/fib.hl

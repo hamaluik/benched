@@ -1,0 +1,10 @@
+-cp src
+
+benched.Benched
+benched.BenchmarkResults
+
+-D doc-gen
+-xml docs/dox.xml
+
+--next
+-cmd haxelib run dox -i docs -o docs --title "Benched" --toplevel-package "benched" -D version "0.1.0" -D source-path "https://github.com/hamaluik/benched/tree/master/src" -D description "A statistics-based benchmarking tool for Haxe, inspired by criterion"

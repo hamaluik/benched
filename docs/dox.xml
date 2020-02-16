@@ -1,0 +1,2977 @@
+<!-- This file can be parsed by haxe.rtti.XmlParser -->
+<haxe>
+	<class path="Array" params="T" file="/usr/share/haxe/std/Array.hx" extern="1">
+		<length public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The length of `this` Array.</haxe_doc>
+		</length>
+		<concat public="1" set="method">
+			<f a="a">
+				<c path="Array"><c path="Array.T"/></c>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Returns a new Array by appending the elements of `a` to the elements of
+		`this` Array.
+
+		This operation does not modify `this` Array.
+
+		If `a` is the empty Array `[]`, a copy of `this` Array is returned.
+
+		The length of the returned Array is equal to the sum of `this.length`
+		and `a.length`.
+
+		If `a` is `null`, the result is unspecified.</haxe_doc>
+		</concat>
+		<join public="1" set="method">
+			<f a="sep">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns a string representation of `this` Array, with `sep` separating
+		each element.
+
+		The result of this operation is equal to `Std.string(this[0]) + sep +
+		Std.string(this[1]) + sep + ... + sep + Std.string(this[this.length-1])`
+
+		If `this` is the empty Array `[]`, the result is the empty String `""`.
+		If `this` has exactly one element, the result is equal to a call to
+		`Std.string(this[0])`.
+
+		If `sep` is null, the result is unspecified.</haxe_doc>
+		</join>
+		<pop public="1" set="method">
+			<f a=""><x path="Null"><c path="Array.T"/></x></f>
+			<haxe_doc>Removes the last element of `this` Array and returns it.
+
+		This operation modifies `this` Array in place.
+
+		If `this` has at least one element, `this.length` will decrease by 1.
+
+		If `this` is the empty Array `[]`, null is returned and the length
+		remains 0.</haxe_doc>
+		</pop>
+		<push public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Adds the element `x` at the end of `this` Array and returns the new
+		length of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		`this.length` increases by 1.</haxe_doc>
+		</push>
+		<reverse public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc><![CDATA[Reverse the order of elements of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		If `this.length < 2`, `this` remains unchanged.]]></haxe_doc>
+		</reverse>
+		<shift public="1" set="method">
+			<f a=""><x path="Null"><c path="Array.T"/></x></f>
+			<haxe_doc>Removes the first element of `this` Array and returns it.
+
+		This operation modifies `this` Array in place.
+
+		If `this` has at least one element, `this`.length and the index of each
+		remaining element is decreased by 1.
+
+		If `this` is the empty Array `[]`, `null` is returned and the length
+		remains 0.</haxe_doc>
+		</shift>
+		<slice public="1" set="method">
+			<f a="pos:?end">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc>Creates a shallow copy of the range of `this` Array, starting at and
+		including `pos`, up to but not including `end`.
+
+		This operation does not modify `this` Array.
+
+		The elements are not copied and retain their identity.
+
+		If `end` is omitted or exceeds `this.length`, it defaults to the end of
+		`this` Array.
+
+		If `pos` or `end` are negative, their offsets are calculated from the
+		end of `this` Array by `this.length + pos` and `this.length + end`
+		respectively. If this yields a negative value, 0 is used instead.
+
+		If `pos` exceeds `this.length` or if `end` is less than or equals
+		`pos`, the result is `[]`.</haxe_doc>
+		</slice>
+		<sort public="1" set="method">
+			<f a="f">
+				<f a=":">
+					<c path="Array.T"/>
+					<c path="Array.T"/>
+					<x path="Int"/>
+				</f>
+				<x path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[Sorts `this` Array according to the comparison function `f`, where
+		`f(x,y)` returns 0 if x == y, a positive Int if x > y and a
+		negative Int if x < y.
+
+		This operation modifies `this` Array in place.
+
+		The sort operation is not guaranteed to be stable, which means that the
+		order of equal elements may not be retained. For a stable Array sorting
+		algorithm, `haxe.ds.ArraySort.sort()` can be used instead.
+
+		If `f` is null, the result is unspecified.]]></haxe_doc>
+		</sort>
+		<splice public="1" set="method">
+			<f a="pos:len">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<haxe_doc><![CDATA[Removes `len` elements from `this` Array, starting at and including
+		`pos`, an returns them.
+
+		This operation modifies `this` Array in place.
+
+		If `len` is < 0 or `pos` exceeds `this`.length, an empty Array [] is
+		returned and `this` Array is unchanged.
+
+		If `pos` is negative, its value is calculated from the end	of `this`
+		Array by `this.length + pos`. If this yields a negative value, 0 is
+		used instead.
+
+		If the sum of the resulting values for `len` and `pos` exceed
+		`this.length`, this operation will affect the elements from `pos` to the
+		end of `this` Array.
+
+		The length of the returned Array is equal to the new length of `this`
+		Array subtracted from the original length of `this` Array. In other
+		words, each element of the original `this` Array either remains in
+		`this` Array or becomes an element of the returned Array.]]></haxe_doc>
+		</splice>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a string representation of `this` Array.
+
+		The result will include the individual elements' String representations
+		separated by comma. The enclosing [ ] may be missing on some platforms,
+		use `Std.string()` to get a String representation that is consistent
+		across platforms.</haxe_doc>
+		</toString>
+		<unshift public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Adds the element `x` at the start of `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		`this.length` and the index of each Array element increases by 1.</haxe_doc>
+		</unshift>
+		<insert public="1" set="method">
+			<f a="pos:x">
+				<x path="Int"/>
+				<c path="Array.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Inserts the element `x` at the position `pos`.
+
+		This operation modifies `this` Array in place.
+
+		The offset is calculated like so:
+
+		- If `pos` exceeds `this.length`, the offset is `this.length`.
+		- If `pos` is negative, the offset is calculated from the end of `this`
+		  Array, i.e. `this.length + pos`. If this yields a negative value, the
+		  offset is 0.
+		- Otherwise, the offset is `pos`.
+
+		If the resulting offset does not exceed `this.length`, all elements from
+		and including that offset to the end of `this` Array are moved one index
+		ahead.</haxe_doc>
+		</insert>
+		<remove public="1" set="method">
+			<f a="x">
+				<c path="Array.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes the first occurrence of `x` in `this` Array.
+
+		This operation modifies `this` Array in place.
+
+		If `x` is found by checking standard equality, it is removed from `this`
+		Array and all following elements are reindexed accordingly. The function
+		then returns true.
+
+		If `x` is not found, `this` Array is not changed and the function
+		returns false.</haxe_doc>
+		</remove>
+		<indexOf public="1" set="method">
+			<f a="x:?fromIndex">
+				<c path="Array.T"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns position of the first occurrence of `x` in `this` Array, searching front to back.
+
+		If `x` is found by checking standard equality, the function returns its index.
+
+		If `x` is not found, the function returns -1.
+
+		If `fromIndex` is specified, it will be used as the starting index to search from,
+		otherwise search starts with zero index. If it is negative, it will be taken as the
+		offset from the end of `this` Array to compute the starting index. If given or computed
+		starting index is less than 0, the whole array will be searched, if it is greater than
+		or equal to the length of `this` Array, the function returns -1.</haxe_doc>
+		</indexOf>
+		<lastIndexOf public="1" set="method">
+			<f a="x:?fromIndex">
+				<c path="Array.T"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns position of the last occurrence of `x` in `this` Array, searching back to front.
+
+		If `x` is found by checking standard equality, the function returns its index.
+
+		If `x` is not found, the function returns -1.
+
+		If `fromIndex` is specified, it will be used as the starting index to search from,
+		otherwise search starts with the last element index. If it is negative, it will be
+		taken as the offset from the end of `this` Array to compute the starting index. If
+		given or computed starting index is greater than or equal to the length of `this` Array,
+		the whole array will be searched, if it is less than 0, the function returns -1.</haxe_doc>
+		</lastIndexOf>
+		<copy public="1" set="method">
+			<f a=""><c path="Array"><c path="Array.T"/></c></f>
+			<haxe_doc>Returns a shallow copy of `this` Array.
+
+		The elements are not copied and retain their identity, so
+		`a[i] == a.copy()[i]` is true for any valid `i`. However,
+		`a == a.copy()` is always false.</haxe_doc>
+		</copy>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><c path="Array.T"/></t></f>
+			<haxe_doc>Returns an iterator of the Array values.</haxe_doc>
+		</iterator>
+		<map public="1" params="S" get="inline" set="null" line="277">
+			<f a="f">
+				<f a="">
+					<c path="Array.T"/>
+					<c path="map.S"/>
+				</f>
+				<c path="Array"><c path="map.S"/></c>
+			</f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>Creates a new Array by applying function `f` to all elements of `this`.
+
+		The order of elements is preserved.
+
+		If `f` is null, the result is unspecified.</haxe_doc>
+		</map>
+		<filter public="1" get="inline" set="null" line="295">
+			<f a="f">
+				<f a="">
+					<c path="Array.T"/>
+					<x path="Bool"/>
+				</f>
+				<c path="Array"><c path="Array.T"/></c>
+			</f>
+			<meta><m n=":runtime"/></meta>
+			<haxe_doc>Returns an Array containing those elements of `this` for which `f`
+		returned true.
+
+		The individual elements are not duplicated and retain their identity.
+
+		If `f` is null, the result is unspecified.</haxe_doc>
+		</filter>
+		<resize public="1" set="method">
+			<f a="len">
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Set the length of the Array.
+
+		If `len` is shorter than the array's current size, the last
+		`length - len` elements will be removed. If `len` is longer, the Array
+		will be extended, with new elements set to a target-specific default
+		value:
+
+		- always null on dynamic targets
+		- 0, 0.0 or false for Int, Float and Bool respectively on static targets
+		- null for other types on static targets</haxe_doc>
+		</resize>
+		<new public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new Array.</haxe_doc>
+		</new>
+		<haxe_doc>An Array is a storage for values. You can access it using indexes or
+	with its API.
+
+	@see https://haxe.org/manual/std-Array.html
+	@see https://haxe.org/manual/lf-array-comprehension.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<abstract path="Class" params="T" file="/usr/share/haxe/std/Class.hx">
+		<this><x path="Class"><c path="Class.T"/></x></this>
+		<haxe_doc>An abstract type that represents a Class.
+
+	See `Type` for the Haxe Reflection API.
+
+	@see https://haxe.org/manual/types-class-instance.html</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<class path="Date" params="" file="/usr/share/haxe/std/Date.hx" extern="1">
+		<now public="1" set="method" static="1">
+			<f a=""><c path="Date"/></f>
+			<haxe_doc>Returns a Date representing the current local time.</haxe_doc>
+		</now>
+		<fromTime public="1" set="method" static="1">
+			<f a="t">
+				<x path="Float"/>
+				<c path="Date"/>
+			</f>
+			<haxe_doc>Creates a Date from the timestamp (in milliseconds) `t`.</haxe_doc>
+		</fromTime>
+		<fromString public="1" set="method" static="1">
+			<f a="s">
+				<c path="String"/>
+				<c path="Date"/>
+			</f>
+			<haxe_doc>Creates a Date from the formatted string `s`. The following formats are
+		accepted by the function:
+
+		- `"YYYY-MM-DD hh:mm:ss"`
+		- `"YYYY-MM-DD"`
+		- `"hh:mm:ss"`
+
+		The first two formats expressed a date in local time. The third is a time
+		relative to the UTC epoch.</haxe_doc>
+		</fromString>
+		<getTime public="1" set="method">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>Returns the timestamp (in milliseconds) of `this` date.
+		On cpp and neko, this function only has a second resolution, so the
+		result will always be a multiple of `1000.0`, e.g. `1454698271000.0`.
+		To obtain the current timestamp with better precision on cpp and neko,
+		see the `Sys.time` API.
+
+		For measuring time differences with millisecond accuracy on
+		all platforms, see `haxe.Timer.stamp`.</haxe_doc>
+		</getTime>
+		<getHours public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the hours of `this` Date (0-23 range) in the local timezone.</haxe_doc>
+		</getHours>
+		<getMinutes public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the minutes of `this` Date (0-59 range) in the local timezone.</haxe_doc>
+		</getMinutes>
+		<getSeconds public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the seconds of `this` Date (0-59 range) in the local timezone.</haxe_doc>
+		</getSeconds>
+		<getFullYear public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the full year of `this` Date (4 digits) in the local timezone.</haxe_doc>
+		</getFullYear>
+		<getMonth public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the month of `this` Date (0-11 range) in the local timezone.
+		Note that the month number is zero-based.</haxe_doc>
+		</getMonth>
+		<getDate public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the day of `this` Date (1-31 range) in the local timezone.</haxe_doc>
+		</getDate>
+		<getDay public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the day of the week of `this` Date (0-6 range, where `0` is Sunday)
+		in the local timezone.</haxe_doc>
+		</getDay>
+		<getUTCHours public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the hours of `this` Date (0-23 range) in UTC.</haxe_doc>
+		</getUTCHours>
+		<getUTCMinutes public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the minutes of `this` Date (0-59 range) in UTC.</haxe_doc>
+		</getUTCMinutes>
+		<getUTCSeconds public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the seconds of `this` Date (0-59 range) in UTC.</haxe_doc>
+		</getUTCSeconds>
+		<getUTCFullYear public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the full year of `this` Date (4 digits) in UTC.</haxe_doc>
+		</getUTCFullYear>
+		<getUTCMonth public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the month of `this` Date (0-11 range) in UTC.
+		Note that the month number is zero-based.</haxe_doc>
+		</getUTCMonth>
+		<getUTCDate public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the day of `this` Date (1-31 range) in UTC.</haxe_doc>
+		</getUTCDate>
+		<getUTCDay public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the day of the week of `this` Date (0-6 range, where `0` is Sunday)
+		in UTC.</haxe_doc>
+		</getUTCDay>
+		<getTimezoneOffset public="1" set="method">
+			<f a=""><x path="Int"/></f>
+			<haxe_doc>Returns the time zone difference of `this` Date in the current locale
+		to UTC, in minutes.
+
+		Assuming the function is executed on a machine in a UTC+2 timezone,
+		`Date.now().getTimezoneOffset()` will return `-120`.</haxe_doc>
+		</getTimezoneOffset>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a string representation of `this` Date in the local timezone
+		using the standard format `YYYY-MM-DD HH:MM:SS`. See `DateTools.format` for
+		other formatting rules.</haxe_doc>
+		</toString>
+		<new public="1" set="method">
+			<f a="year:month:day:hour:min:sec">
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Creates a new date object from the given arguments.
+
+		The behaviour of a Date instance is only consistent across platforms if
+		the the arguments describe a valid date.
+
+		- month: 0 to 11 (note that this is zero-based)
+		- day: 1 to 31
+		- hour: 0 to 23
+		- min: 0 to 59
+		- sec: 0 to 59</haxe_doc>
+		</new>
+		<haxe_doc>The Date class provides a basic structure for date and time related
+	information. Date instances can be created by
+
+	- `new Date()` for a specific date,
+	- `Date.now()` to obtain information about the current time,
+	- `Date.fromTime()` with a given timestamp or
+	- `Date.fromString()` by parsing from a String.
+
+	There are some extra functions available in the `DateTools` class.
+
+	In the context of Haxe dates, a timestamp is defined as the number of
+	milliseconds elapsed since 1st January 1970 UTC.
+
+	## Supported range
+
+	Due to platform limitations, only dates in the range 1970 through 2038 are
+	supported consistently. Some targets may support dates outside this range,
+	depending on the OS at runtime. The `Date.fromTime` method will not work with
+	timestamps outside the range on any target.</haxe_doc>
+	</class>
+	<abstract path="Enum" params="T" file="/usr/share/haxe/std/Enum.hx">
+		<this><x path="Enum"><c path="Enum.T"/></x></this>
+		<haxe_doc>An abstract type that represents an Enum type.
+
+	The corresponding enum instance type is `EnumValue`.
+
+	See `Type` for the Haxe Reflection API.
+
+	@see https://haxe.org/manual/types-enum-instance.html</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="EnumValue" params="" file="/usr/share/haxe/std/EnumValue.hx">
+		<this><x path="EnumValue"/></this>
+		<haxe_doc>An abstract type that represents any enum value.
+	See `Type` for the Haxe Reflection API.
+
+	@see https://haxe.org/manual/types-enum-instance.html</haxe_doc>
+		<meta><m n=":coreType"/></meta>
+		<impl><class path="_EnumValue.EnumValue_Impl_" params="" file="/usr/share/haxe/std/EnumValue.hx" private="1" module="EnumValue"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<typedef path="Map" params="K:V" file="/usr/share/haxe/std/Map.hx"><x path="haxe.ds.Map">
+	<c path="Map.K"/>
+	<c path="Map.V"/>
+</x></typedef>
+	<typedef path="IMap" params="K:V" file="/usr/share/haxe/std/Map.hx" module="Map">
+		<c path="haxe.IMap">
+			<c path="IMap.K"/>
+			<c path="IMap.V"/>
+		</c>
+		<meta>
+			<m n=":dox"><e>hide</e></m>
+			<m n=":deprecated"/>
+		</meta>
+	</typedef>
+	<class path="Math" params="" file="/usr/share/haxe/std/Math.hx" extern="1">
+		<PI public="1" set="null" static="1">
+			<x path="Float"/>
+			<haxe_doc>Represents the ratio of the circumference of a circle to its diameter,
+		specified by the constant, π. `PI` is approximately 3.141592653589793.</haxe_doc>
+		</PI>
+		<NEGATIVE_INFINITY public="1" set="null" static="1">
+			<x path="Float"/>
+			<haxe_doc>A special `Float` constant which denotes negative infinity.
+
+		For example, this is the result of -1.0 / 0.0.
+
+		Operations with `NEGATIVE_INFINITY` as an operand may result in
+		`NEGATIVE_INFINITY`, `POSITIVE_INFINITY` or `NaN`.
+
+		If this constant is converted to an `Int`, e.g. through `Std.int()`, the
+		result is unspecified.</haxe_doc>
+		</NEGATIVE_INFINITY>
+		<POSITIVE_INFINITY public="1" set="null" static="1">
+			<x path="Float"/>
+			<haxe_doc>A special `Float` constant which denotes positive infinity.
+
+		For example, this is the result of 1.0 / 0.0.
+
+		Operations with `POSITIVE_INFINITY` as an operand may result in
+		`NEGATIVE_INFINITY`, `POSITIVE_INFINITY` or `NaN`.
+
+		If this constant is converted to an `Int`, e.g. through `Std.int()`, the
+		result is unspecified.</haxe_doc>
+		</POSITIVE_INFINITY>
+		<NaN public="1" set="null" static="1">
+			<x path="Float"/>
+			<haxe_doc>A special `Float` constant which denotes an invalid number.
+
+		NaN stands for "Not a Number". It occurs when a mathematically incorrect
+		operation is executed, such as taking the square root of a negative
+		number: Math.sqrt(-1).
+
+		All further operations with `NaN` as an operand will result in `NaN`.
+
+		If this constant is converted to an `Int`, e.g. through `Std.int()`, the
+		result is unspecified.
+
+		In order to test if a value is `NaN`, you should use `Math.isNaN()` function.</haxe_doc>
+		</NaN>
+		<abs public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the absolute value of `v`.
+
+		If `v` is positive or 0, the result is unchanged. Otherwise the result
+		is -`v`.
+
+		If `v` is `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`, the result is
+		`POSITIVE_INFINITY`.
+
+		If `v` is `NaN`, the result is `NaN`.</haxe_doc>
+		</abs>
+		<min public="1" set="method" static="1">
+			<f a="a:b">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the smaller of values `a` and `b`.
+
+		If `a` or `b` are `NaN`, the result is `NaN`.
+		If `a` or `b` are `NEGATIVE_INFINITY`, the result is `NEGATIVE_INFINITY`.
+		If `a` and `b` are `POSITIVE_INFINITY`, the result is `POSITIVE_INFINITY`.</haxe_doc>
+		</min>
+		<max public="1" set="method" static="1">
+			<f a="a:b">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the greater of values `a` and `b`.
+
+		If `a` or `b` are `NaN`, the result is `NaN`.
+		If `a` or `b` are `POSITIVE_INFINITY`, the result is `POSITIVE_INFINITY`.
+		If `a` and `b` are `NEGATIVE_INFINITY`, the result is `NEGATIVE_INFINITY`.</haxe_doc>
+		</max>
+		<sin public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric sine of the specified angle `v`, in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</sin>
+		<cos public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric cosine of the specified angle `v`, in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</cos>
+		<tan public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric tangent of the specified angle `v`, in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</tan>
+		<asin public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric arc of the specified angle `v`, in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</asin>
+		<acos public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric arc cosine of the specified angle `v`,
+		in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</acos>
+		<atan public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric arc tangent of the specified angle `v`,
+		in radians.
+
+		If `v` is `NaN` or infinite, the result is `NaN`.</haxe_doc>
+		</atan>
+		<atan2 public="1" set="method" static="1">
+			<f a="y:x">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the trigonometric arc tangent whose tangent is the quotient of
+		two specified numbers, in radians.
+
+		If parameter `x` or `y`  is `NaN`, `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`,
+		the result is `NaN`.</haxe_doc>
+		</atan2>
+		<exp public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns Euler's number, raised to the power of `v`.
+
+		exp(1.0) is approximately 2.718281828459.
+
+		If `v` is `POSITIVE_INFINITY`, the result is `POSITIVE_INFINITY`.
+		If `v` is `NEGATIVE_INFINITY`, the result is `0.0`.
+		If `v` is `NaN`, the result is `NaN`.</haxe_doc>
+		</exp>
+		<log public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the natural logarithm of `v`.
+
+		This is the mathematical inverse operation of exp,
+		i.e. `log(exp(v)) == v` always holds.
+
+		If `v` is negative (including `NEGATIVE_INFINITY`) or `NaN`, the result
+		is `NaN`.
+		If `v` is `POSITIVE_INFINITY`, the result is `POSITIVE_INFINITY`.
+		If `v` is `0.0`, the result is `NEGATIVE_INFINITY`.</haxe_doc>
+		</log>
+		<pow public="1" set="method" static="1">
+			<f a="v:exp">
+				<x path="Float"/>
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns a specified base `v` raised to the specified power `exp`.</haxe_doc>
+		</pow>
+		<sqrt public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Returns the square root of `v`.
+
+		If `v` is negative (including `NEGATIVE_INFINITY`) or `NaN`, the result
+		is `NaN`.
+		If `v` is `POSITIVE_INFINITY`, the result is `POSITIVE_INFINITY`.
+		If `v` is `0.0`, the result is `0.0`.</haxe_doc>
+		</sqrt>
+		<round public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Rounds `v` to the nearest integer value.
+
+		Ties are rounded up, so that `0.5` becomes `1` and `-0.5` becomes `0`.
+
+		If `v` is outside of the signed `Int32` range, or is `NaN`, `NEGATIVE_INFINITY`
+		or `POSITIVE_INFINITY`, the result is unspecified.</haxe_doc>
+		</round>
+		<floor public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the largest integer value that is not greater than `v`.
+
+		If `v` is outside of the signed `Int32` range, or is `NaN`, `NEGATIVE_INFINITY`
+		or `POSITIVE_INFINITY`, the result is unspecified.</haxe_doc>
+		</floor>
+		<ceil public="1" set="method" static="1">
+			<f a="v">
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the smallest integer value that is not less than `v`.
+
+		If `v` is outside of the signed `Int32` range, or is `NaN`, `NEGATIVE_INFINITY`
+		or `POSITIVE_INFINITY`, the result is unspecified.</haxe_doc>
+		</ceil>
+		<random public="1" set="method" static="1">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>Returns a pseudo-random number which is greater than or equal to 0.0,
+		and less than 1.0.</haxe_doc>
+		</random>
+		<ffloor public="1" get="inline" set="null" line="263" static="1"><f a="v">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></ffloor>
+		<fceil public="1" get="inline" set="null" line="267" static="1"><f a="v">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></fceil>
+		<fround public="1" get="inline" set="null" line="271" static="1"><f a="v">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></fround>
+		<isFinite public="1" set="method" static="1">
+			<f a="f">
+				<x path="Float"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if `f` is a finite number.
+
+		If `f` is `POSITIVE_INFINITY`, `NEGATIVE_INFINITY` or `NaN`, the result
+		is `false`, otherwise the result is `true`.</haxe_doc>
+		</isFinite>
+		<isNaN public="1" set="method" static="1">
+			<f a="f">
+				<x path="Float"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if `f` is not a valid number.
+
+		If `f` is `NaN`, the result is `true`, otherwise the result is `false`.
+		In particular, both `POSITIVE_INFINITY` and `NEGATIVE_INFINITY` are
+		not considered `NaN`.</haxe_doc>
+		</isNaN>
+		<haxe_doc>This class defines mathematical functions and constants.
+
+	@see https://haxe.org/manual/std-math.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="Reflect" params="" file="/usr/share/haxe/std/Reflect.hx" extern="1">
+		<hasField public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if structure `o` has a field named `field`.
+
+		This is only guaranteed to work for anonymous structures. Refer to
+		`Type.getInstanceFields` for a function supporting class instances.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</hasField>
+		<field public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<d/>
+			</f>
+			<haxe_doc>Returns the value of the field named `field` on object `o`.
+
+		If `o` is not an object or has no field named `field`, the result is
+		null.
+
+		If the field is defined as a property, its accessors are ignored. Refer
+		to `Reflect.getProperty` for a function supporting property accessors.
+
+		If `field` is null, the result is unspecified.
+
+		(As3) If used on a property field, the getter will be invoked. It is
+		not possible to obtain the value directly.</haxe_doc>
+		</field>
+		<setField public="1" set="method" static="1">
+			<f a="o:field:value">
+				<d/>
+				<c path="String"/>
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the field named `field` of object `o` to value `value`.
+
+		If `o` has no field named `field`, this function is only guaranteed to
+		work for anonymous structures.
+
+		If `o` or `field` are null, the result is unspecified.
+
+		(As3) If used on a property field, the setter will be invoked. It is
+		not possible to set the value directly.</haxe_doc>
+		</setField>
+		<getProperty public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<d/>
+			</f>
+			<haxe_doc>Returns the value of the field named `field` on object `o`, taking
+		property getter functions into account.
+
+		If the field is not a property, this function behaves like
+		`Reflect.field`, but might be slower.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</getProperty>
+		<setProperty public="1" set="method" static="1">
+			<f a="o:field:value">
+				<d/>
+				<c path="String"/>
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the field named `field` of object `o` to value `value`, taking
+		property setter functions into account.
+
+		If the field is not a property, this function behaves like
+		`Reflect.setField`, but might be slower.
+
+		If `field` is null, the result is unspecified.</haxe_doc>
+		</setProperty>
+		<callMethod public="1" set="method" static="1">
+			<f a="o:func:args">
+				<d/>
+				<x path="haxe.Function"/>
+				<c path="Array"><d/></c>
+				<d/>
+			</f>
+			<haxe_doc>Call a method `func` with the given arguments `args`.
+
+		The object `o` is ignored in most cases. It serves as the `this`-context in the following
+		situations:
+
+		* (neko) Allows switching the context to `o` in all cases.
+		* (macro) Same as neko for Haxe 3. No context switching in Haxe 4.
+		* (js, lua) Require the `o` argument if `func` does not, but should have a context.
+			This can occur by accessing a function field natively, e.g. through `Reflect.field`
+			or by using `(object : Dynamic).field`. However, if `func` has a context, `o` is
+			ignored like on other targets.</haxe_doc>
+		</callMethod>
+		<fields public="1" set="method" static="1">
+			<f a="o">
+				<d/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns the fields of structure `o`.
+
+		This method is only guaranteed to work on anonymous structures. Refer to
+		`Type.getInstanceFields` for a function supporting class instances.
+
+		If `o` is null, the result is unspecified.</haxe_doc>
+		</fields>
+		<isFunction public="1" set="method" static="1">
+			<f a="f">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Returns true if `f` is a function, false otherwise.
+
+		If `f` is null, the result is false.</haxe_doc>
+		</isFunction>
+		<compare public="1" params="T" set="method" static="1">
+			<f a="a:b">
+				<c path="compare.T"/>
+				<c path="compare.T"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Compares `a` and `b`.
+
+		If `a` is less than `b`, the result is negative. If `b` is less than
+		`a`, the result is positive. If `a` and `b` are equal, the result is 0.
+
+		This function is only defined if `a` and `b` are of the same type.
+
+		If that type is a function, the result is unspecified and
+		`Reflect.compareMethods` should be used instead.
+
+		For all other types, the result is 0 if `a` and `b` are equal. If they
+		are not equal, the result depends on the type and is negative if:
+
+		- Numeric types: a is less than b
+		- String: a is lexicographically less than b
+		- Other: unspecified
+
+		If `a` and `b` are null, the result is 0. If only one of them is null,
+		the result is unspecified.</haxe_doc>
+		</compare>
+		<compareMethods public="1" set="method" static="1">
+			<f a="f1:f2">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Compares the functions `f1` and `f2`.
+
+		If `f1` or `f2` are null, the result is false.
+		If `f1` or `f2` are not functions, the result is unspecified.
+
+		Otherwise the result is true if `f1` and the `f2` are physically equal,
+		false otherwise.
+
+		If `f1` or `f2` are member method closures, the result is true if they
+		are closures of the same method on the same object value, false otherwise.</haxe_doc>
+		</compareMethods>
+		<isObject public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc><![CDATA[Tells if `v` is an object.
+
+		The result is true if `v` is one of the following:
+
+		- class instance
+		- structure
+		- `Class<T>`
+		- `Enum<T>`
+
+		Otherwise, including if `v` is null, the result is false.]]></haxe_doc>
+		</isObject>
+		<isEnumValue public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if `v` is an enum value.
+
+		The result is true if `v` is of type EnumValue, i.e. an enum
+		constructor.
+
+		Otherwise, including if `v` is null, the result is false.</haxe_doc>
+		</isEnumValue>
+		<deleteField public="1" set="method" static="1">
+			<f a="o:field">
+				<d/>
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Removes the field named `field` from structure `o`.
+
+		This method is only guaranteed to work on anonymous structures.
+
+		If `o` or `field` are null, the result is unspecified.</haxe_doc>
+		</deleteField>
+		<copy public="1" params="T" set="method" static="1">
+			<f a="o">
+				<x path="Null"><c path="copy.T"/></x>
+				<x path="Null"><c path="copy.T"/></x>
+			</f>
+			<haxe_doc>Copies the fields of structure `o`.
+
+		This is only guaranteed to work on anonymous structures.
+
+		If `o` is null, the result is `null`.</haxe_doc>
+		</copy>
+		<makeVarArgs public="1" set="method" static="1">
+			<f a="f">
+				<f a="">
+					<c path="Array"><d/></c>
+					<d/>
+				</f>
+				<d/>
+			</f>
+			<haxe_doc>Transform a function taking an array of arguments into a function that can
+		be called with any number of arguments.</haxe_doc>
+			<overloads><makeVarArgs public="1" set="method">
+	<f a="f">
+		<f a="">
+			<c path="Array"><d/></c>
+			<x path="Void"/>
+		</f>
+		<d/>
+	</f>
+	<haxe_doc>Transform a function taking an array of arguments into a function that can
+		be called with any number of arguments.</haxe_doc>
+</makeVarArgs></overloads>
+		</makeVarArgs>
+		<haxe_doc>The Reflect API is a way to manipulate values dynamically through an
+	abstract interface in an untyped manner. Use with care.
+
+	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<class path="Std" params="" file="/usr/share/haxe/std/Std.hx" extern="1">
+		<is public="1" set="method" static="1">
+			<f a="v:t">
+				<d/>
+				<d/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Tells if a value `v` is of the type `t`. Returns `false` if `v` or `t` are null.
+
+		If `t` is a class or interface with `@:generic` meta, the result is `false`.</haxe_doc>
+		</is>
+		<downcast public="1" params="T:S" set="method" static="1">
+			<f a="value:c">
+				<c path="downcast.T"/>
+				<x path="Class"><c path="downcast.S"/></x>
+				<c path="downcast.S"/>
+			</f>
+			<haxe_doc>Checks if object `value` is an instance of class or interface `c`.
+
+		Compiles only if the type specified by `c` can be assigned to the type
+		of `value`.
+
+		This method checks if a downcast is possible. That is, if the runtime
+		type of `value` is assignable to the type specified by `c`, `value` is
+		returned. Otherwise null is returned.
+
+		This method is not guaranteed to work with core types such as `String`,
+		`Array` and `Date`.
+
+		If `value` is null, the result is null. If `c` is null, the result is
+		unspecified.</haxe_doc>
+		</downcast>
+		<instance public="1" params="T:S" set="method" static="1">
+			<f a="value:c">
+				<c path="instance.T"/>
+				<x path="Class"><c path="instance.S"/></x>
+				<c path="instance.S"/>
+			</f>
+			<meta><m n=":deprecated"><e>"Std.instance() is deprecated. Use Std.downcast() instead."</e></m></meta>
+		</instance>
+		<string public="1" set="method" static="1">
+			<f a="s">
+				<d/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Converts any value to a String.
+
+		If `s` is of `String`, `Int`, `Float` or `Bool`, its value is returned.
+
+		If `s` is an instance of a class and that class or one of its parent classes has
+		a `toString` method, that method is called. If no such method is present, the result
+		is unspecified.
+
+		If `s` is an enum constructor without argument, the constructor's name is returned. If
+		arguments exists, the constructor's name followed by the String representations of
+		the arguments is returned.
+
+		If `s` is a structure, the field names along with their values are returned. The field order
+		and the operator separating field names and values are unspecified.
+
+		If s is null, "null" is returned.</haxe_doc>
+		</string>
+		<int public="1" set="method" static="1">
+			<f a="x">
+				<x path="Float"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Converts a `Float` to an `Int`, rounded towards 0.
+
+		If `x` is outside of the signed Int32 range, or is `NaN`, `NEGATIVE_INFINITY` or `POSITIVE_INFINITY`, the result is unspecified.</haxe_doc>
+		</int>
+		<parseInt public="1" set="method" static="1">
+			<f a="x">
+				<c path="String"/>
+				<x path="Null"><x path="Int"/></x>
+			</f>
+			<haxe_doc>Converts a `String` to an `Int`.
+
+		Leading whitespaces are ignored.
+
+		If `x` starts with 0x or 0X, hexadecimal notation is recognized where the following digits may
+		contain 0-9 and A-F.
+
+		Otherwise `x` is read as decimal number with 0-9 being allowed characters. `x` may also start with
+		a - to denote a negative value.
+
+		In decimal mode, parsing continues until an invalid character is detected, in which case the
+		result up to that point is returned. For hexadecimal notation, the effect of invalid characters
+		is unspecified.
+
+		Leading 0s that are not part of the 0x/0X hexadecimal notation are ignored, which means octal
+		notation is not supported.
+
+		If `x` is null, the result is unspecified.
+		If `x` cannot be parsed as integer, the result is `null`.</haxe_doc>
+		</parseInt>
+		<parseFloat public="1" set="method" static="1">
+			<f a="x">
+				<c path="String"/>
+				<x path="Float"/>
+			</f>
+			<haxe_doc>Converts a `String` to a `Float`.
+
+		The parsing rules for `parseInt` apply here as well, with the exception of invalid input
+		resulting in a `NaN` value instead of null.
+
+		Additionally, decimal notation may contain a single `.` to denote the start of the fractions.</haxe_doc>
+		</parseFloat>
+		<random public="1" set="method" static="1">
+			<f a="x">
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc><![CDATA[Return a random integer between 0 included and `x` excluded.
+
+		If `x <= 1`, the result is always 0.]]></haxe_doc>
+		</random>
+		<haxe_doc>The Std class provides standard methods for manipulating basic types.</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<abstract path="Void" params="" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Void"/></this>
+		<haxe_doc>The standard `Void` type. Only `null` values can be of the type `Void`.
+
+	@see https://haxe.org/manual/types-void.html</haxe_doc>
+		<meta><m n=":coreType"/></meta>
+	</abstract>
+	<abstract path="Float" params="" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Float"/></this>
+		<haxe_doc><![CDATA[The standard `Float` type, this is a double-precision IEEE 64bit float.
+
+	On static targets, `null` cannot be assigned to Float. If this is necessary,
+	`Null<Float>` can be used instead.
+
+	`Std.int` converts a `Float` to an `Int`, rounded towards 0.
+	`Std.parseFloat` converts a `String` to a `Float`.
+
+	@see https://haxe.org/manual/types-basic-types.html
+	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Int" params="" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Int"/></this>
+		<to><icast><x path="Float"/></icast></to>
+		<haxe_doc><![CDATA[The standard `Int` type. Its precision depends on the platform.
+
+	On static targets, `null` cannot be assigned to `Int`. If this is necessary,
+	`Null<Int>` can be used instead.
+
+	`Std.int` converts a `Float` to an `Int`, rounded towards 0.
+	`Std.parseInt` converts a `String` to an `Int`.
+
+	@see https://haxe.org/manual/types-basic-types.html
+	@see https://haxe.org/manual/std-math-integer-math.html
+	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Null" params="T" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<from><icast><c path="Null.T"/></icast></from>
+		<this><x path="Null"><c path="Null.T"/></x></this>
+		<to><icast><c path="Null.T"/></icast></to>
+		<haxe_doc><![CDATA[`Null<T>` is a wrapper that can be used to make the basic types `Int`,
+	`Float` and `Bool` nullable on static targets.
+
+	If null safety is enabled, only types wrapped in `Null<T>` are nullable.
+
+	Otherwise, it has no effect on non-basic-types, but it can be useful as a way to document
+	that `null` is an acceptable value for a method argument, return value or variable.
+
+	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
+		<meta>
+			<m n=":forward"/>
+			<m n=":coreType"/>
+		</meta>
+	</abstract>
+	<abstract path="Bool" params="" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Bool"/></this>
+		<haxe_doc><![CDATA[The standard Boolean type, which can either be `true` or `false`.
+
+	On static targets, `null` cannot be assigned to `Bool`. If this is necessary,
+	`Null<Bool>` can be used instead.
+
+	@see https://haxe.org/manual/types-bool.html
+	@see https://haxe.org/manual/types-nullability.html]]></haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":notNull"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<abstract path="Dynamic" params="T" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<this><x path="Dynamic"><c path="Dynamic.T"/></x></this>
+		<haxe_doc>`Dynamic` is a special type which is compatible with all other types.
+
+	Use of `Dynamic` should be minimized as it prevents several compiler
+	checks and optimizations. See `Any` type for a safer alternative for
+	representing values of any type.
+
+	@see https://haxe.org/manual/types-dynamic.html</haxe_doc>
+		<meta>
+			<m n=":coreType"/>
+			<m n=":runtimeValue"/>
+		</meta>
+	</abstract>
+	<typedef path="Iterator" params="T" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<a>
+			<next set="method">
+				<f a=""><c path="Iterator.T"/></f>
+				<haxe_doc>Returns the current item of the `Iterator` and advances to the next one.
+
+		This method is not required to check `hasNext()` first. A call to this
+		method while `hasNext()` is `false` yields unspecified behavior.
+
+		On the other hand, iterators should not require a call to `hasNext()`
+		before the first call to `next()` if an element is available.</haxe_doc>
+			</next>
+			<hasNext set="method">
+				<f a=""><x path="Bool"/></f>
+				<haxe_doc>Returns `false` if the iteration is complete, `true` otherwise.
+
+		Usually iteration is considered to be complete if all elements of the
+		underlying data structure were handled through calls to `next()`. However,
+		in custom iterators any logic may be used to determine the completion
+		state.</haxe_doc>
+			</hasNext>
+		</a>
+		<haxe_doc>An `Iterator` is a structure that permits iteration over elements of type `T`.
+
+	Any class with matching `hasNext()` and `next()` fields is considered an `Iterator`
+	and can then be used e.g. in `for`-loops. This makes it easy to implement
+	custom iterators.
+
+	@see https://haxe.org/manual/lf-iterators.html</haxe_doc>
+	</typedef>
+	<typedef path="Iterable" params="T" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<a><iterator set="method"><f a=""><t path="Iterator"><c path="Iterable.T"/></t></f></iterator></a>
+		<haxe_doc>An `Iterable` is a data structure which has an `iterator()` method.
+	See `Lambda` for generic functions on iterable structures.
+
+	@see https://haxe.org/manual/lf-iterators.html</haxe_doc>
+	</typedef>
+	<typedef path="KeyValueIterator" params="K:V" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<t path="Iterator"><a>
+	<value><c path="KeyValueIterator.V"/></value>
+	<key><c path="KeyValueIterator.K"/></key>
+</a></t>
+		<haxe_doc>A `KeyValueIterator` is an `Iterator` that has a key and a value.</haxe_doc>
+	</typedef>
+	<typedef path="KeyValueIterable" params="K:V" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes">
+		<a><keyValueIterator set="method"><f a=""><t path="KeyValueIterator">
+	<c path="KeyValueIterable.K"/>
+	<c path="KeyValueIterable.V"/>
+</t></f></keyValueIterator></a>
+		<haxe_doc>A `KeyValueIterable` is a data structure which has a `keyValueIterator()`
+	method to iterate over key-value-pairs.</haxe_doc>
+	</typedef>
+	<class path="ArrayAccess" params="T" file="/usr/share/haxe/std/StdTypes.hx" module="StdTypes" extern="1" interface="1"><haxe_doc>`ArrayAccess` is used to indicate a class that can be accessed using brackets.
+	The type parameter represents the type of the elements stored.
+
+	This interface should be used for externs only. Haxe does not support custom
+	array access on classes. However, array access can be implemented for
+	abstract types.
+
+	@see https://haxe.org/manual/types-abstract-array-access.html</haxe_doc></class>
+	<class path="String" params="" file="/usr/share/haxe/std/String.hx" extern="1">
+		<fromCharCode public="1" set="method" static="1">
+			<f a="code">
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the String corresponding to the character code `code`.
+
+		If `code` is negative or has another invalid value, the result is
+		unspecified.</haxe_doc>
+		</fromCharCode>
+		<length public="1" set="null">
+			<x path="Int"/>
+			<haxe_doc>The number of characters in `this` String.</haxe_doc>
+		</length>
+		<toUpperCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a String where all characters of `this` String are upper case.</haxe_doc>
+		</toUpperCase>
+		<toLowerCase public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns a String where all characters of `this` String are lower case.</haxe_doc>
+		</toLowerCase>
+		<charAt public="1" set="method">
+			<f a="index">
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the character at position `index` of `this` String.
+
+		If `index` is negative or exceeds `this.length`, the empty String `""`
+		is returned.</haxe_doc>
+		</charAt>
+		<charCodeAt public="1" set="method">
+			<f a="index">
+				<x path="Int"/>
+				<x path="Null"><x path="Int"/></x>
+			</f>
+			<haxe_doc>Returns the character code at position `index` of `this` String.
+
+		If `index` is negative or exceeds `this.length`, `null` is returned.
+
+		To obtain the character code of a single character, `"x".code` can be
+		used instead to inline the character code at compile time. Note that
+		this only works on String literals of length 1.</haxe_doc>
+		</charCodeAt>
+		<indexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the position of the leftmost occurrence of `str` within `this`
+		String.
+
+		If `startIndex` is given, the search is performed within the substring
+		of `this` String starting from `startIndex` (if `startIndex` is posivite
+		or 0) or `max(this.length + startIndex, 0)` (if `startIndex` is negative).
+
+		If `startIndex` exceeds `this.length`, -1 is returned.
+
+		Otherwise the search is performed within `this` String. In either case,
+		the returned position is relative to the beginning of `this` String.
+
+		If `str` cannot be found, -1 is returned.</haxe_doc>
+		</indexOf>
+		<lastIndexOf public="1" set="method">
+			<f a="str:?startIndex">
+				<c path="String"/>
+				<x path="Int"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the position of the rightmost occurrence of `str` within `this`
+		String.
+
+		If `startIndex` is given, the search is performed within the substring
+		of `this` String from 0 to `startIndex + str.length`. Otherwise the search
+		is performed within `this` String. In either case, the returned position
+		is relative to the beginning of `this` String.
+
+		If `str` cannot be found, -1 is returned.</haxe_doc>
+		</lastIndexOf>
+		<split public="1" set="method">
+			<f a="delimiter">
+				<c path="String"/>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Splits `this` String at each occurrence of `delimiter`.
+
+		If `this` String is the empty String `""`, the result is not consistent
+		across targets and may either be `[]` (on Js, Cpp) or `[""]`.
+
+		If `delimiter` is the empty String `""`, `this` String is split into an
+		Array of `this.length` elements, where the elements correspond to the
+		characters of `this` String.
+
+		If `delimiter` is not found within `this` String, the result is an Array
+		with one element, which equals `this` String.
+
+		If `delimiter` is null, the result is unspecified.
+
+		Otherwise, `this` String is split into parts at each occurrence of
+		`delimiter`. If `this` String starts (or ends) with `delimiter`, the
+		result `Array` contains a leading (or trailing) empty String `""` element.
+		Two subsequent delimiters also result in an empty String `""` element.</haxe_doc>
+		</split>
+		<substr public="1" set="method">
+			<f a="pos:?len">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns `len` characters of `this` String, starting at position `pos`.
+
+		If `len` is omitted, all characters from position `pos` to the end of
+		`this` String are included.
+
+		If `pos` is negative, its value is calculated from the end of `this`
+		String by `this.length + pos`. If this yields a negative value, 0 is
+		used instead.
+
+		If the calculated position + `len` exceeds `this.length`, the characters
+		from that position to the end of `this` String are returned.
+
+		If `len` is negative, the result is unspecified.</haxe_doc>
+		</substr>
+		<substring public="1" set="method">
+			<f a="startIndex:?endIndex">
+				<x path="Int"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the part of `this` String from `startIndex` to but not including `endIndex`.
+
+		If `startIndex` or `endIndex` are negative, 0 is used instead.
+
+		If `startIndex` exceeds `endIndex`, they are swapped.
+
+		If the (possibly swapped) `endIndex` is omitted or exceeds
+		`this.length`, `this.length` is used instead.
+
+		If the (possibly swapped) `startIndex` exceeds `this.length`, the empty
+		String `""` is returned.</haxe_doc>
+		</substring>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns the String itself.</haxe_doc>
+		</toString>
+		<new public="1" set="method">
+			<f a="string">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Creates a copy from a given String.</haxe_doc>
+		</new>
+		<haxe_doc>The basic String class.
+
+	A Haxe String is immutable, it is not possible to modify individual
+	characters. No method of this class changes the state of `this` String.
+
+	Strings can be constructed using the String literal syntax `"string value"`.
+
+	String can be concatenated by using the `+` operator. If an operand is not a
+	String, it is passed through `Std.string()` first.
+
+	@see https://haxe.org/manual/std-String.html</haxe_doc>
+	</class>
+	<class path="StringTools" params="" file="/usr/share/haxe/std/StringTools.hx">
+		<rpad public="1" set="method" line="400" static="1">
+			<f a="s:c:l">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Int"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Appends `c` to `s` until `s.length` is at least `l`.
+
+		If `c` is the empty String `""` or if `l` does not exceed `s.length`,
+		`s` is returned unchanged.
+
+		If `c.length` is 1, the resulting String length is exactly `l`.
+
+		Otherwise the length may exceed `l`.
+
+		If `c` is null, the result is unspecified.</haxe_doc>
+		</rpad>
+		<haxe_doc>This class provides advanced methods on Strings. It is ideally used with
+	`using StringTools` and then acts as an [extension](https://haxe.org/manual/lf-static-extension.html)
+	to the `String` class.
+
+	If the first argument to any of the methods is null, the result is
+	unspecified.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<class path="Sys" params="" file="/usr/share/haxe/std/Sys.hx" extern="1">
+		<print public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Prints any value to the standard output.</haxe_doc>
+		</print>
+		<println public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Prints any value to the standard output, followed by a newline.
+		On Windows, this function outputs a CRLF newline.
+		LF newlines are printed on all other platforms.</haxe_doc>
+		</println>
+		<args public="1" set="method" static="1">
+			<f a=""><c path="Array"><c path="String"/></c></f>
+			<haxe_doc>Returns all the arguments that were passed in the command line.
+		This does not include the interpreter or the name of the program file.
+
+		(java)(eval) On Windows, non-ASCII Unicode arguments will not work correctly.
+
+		(cs) Non-ASCII Unicode arguments will not work correctly.</haxe_doc>
+		</args>
+		<getEnv public="1" set="method" static="1">
+			<f a="s">
+				<c path="String"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the value of the given environment variable, or `null` if it
+		doesn't exist.</haxe_doc>
+		</getEnv>
+		<putEnv public="1" set="method" static="1">
+			<f a="s:v">
+				<c path="String"/>
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Sets the value of the given environment variable.
+
+		(java) This functionality is not available on Java; calling this function will throw.</haxe_doc>
+		</putEnv>
+		<environment public="1" set="method" static="1">
+			<f a=""><t path="Map">
+	<c path="String"/>
+	<c path="String"/>
+</t></f>
+			<haxe_doc>Returns all environment variables.</haxe_doc>
+		</environment>
+		<sleep public="1" set="method" static="1">
+			<f a="seconds">
+				<x path="Float"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Suspends execution for the given length of time (in seconds).</haxe_doc>
+		</sleep>
+		<setTimeLocale public="1" set="method" static="1">
+			<f a="loc">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Changes the current time locale, which will affect `DateTools.format` date formating.
+		Returns `true` if the locale was successfully changed.</haxe_doc>
+		</setTimeLocale>
+		<getCwd public="1" set="method" static="1">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Gets the current working directory (usually the one in which the program was started).</haxe_doc>
+		</getCwd>
+		<setCwd public="1" set="method" static="1">
+			<f a="s">
+				<c path="String"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Changes the current working directory.
+
+		(java) This functionality is not available on Java; calling this function will throw.</haxe_doc>
+		</setCwd>
+		<systemName public="1" set="method" static="1">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns the type of the current system. Possible values are:
+		 - `"Windows"`
+		 - `"Linux"`
+		 - `"BSD"`
+		 - `"Mac"`</haxe_doc>
+		</systemName>
+		<command public="1" set="method" static="1">
+			<f a="cmd:?args">
+				<c path="String"/>
+				<c path="Array"><c path="String"/></c>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Runs the given command. The command output will be printed to the same output as the current process.
+		The current process will block until the command terminates.
+		The return value is the exit code of the command (usually `0` indicates no error).
+
+		Command arguments can be passed in two ways:
+
+		 1. Using `args` to pass command arguments. Each argument will be automatically quoted and shell meta-characters will be escaped if needed.
+		`cmd` should be an executable name that can be located in the `PATH` environment variable, or a full path to an executable.
+
+		 2. When `args` is not given or is `null`, command arguments can be appended to `cmd`. No automatic quoting/escaping will be performed. `cmd` should be formatted exactly as it would be when typed at the command line.
+		It can run executables, as well as shell commands that are not executables (e.g. on Windows: `dir`, `cd`, `echo` etc).
+
+		Use the `sys.io.Process` API for more complex tasks, such as background processes, or providing input to the command.</haxe_doc>
+		</command>
+		<exit public="1" set="method" static="1">
+			<f a="code">
+				<x path="Int"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>Exits the current process with the given exit code.
+
+		(macro)(eval) Being invoked in a macro or eval context (e.g. with `-x` or `--run`) immediately terminates
+		the compilation process, which also prevents the execution of any `--next` sections of compilation arguments.</haxe_doc>
+		</exit>
+		<time public="1" set="method" static="1">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>Gives the most precise timestamp value available (in seconds).</haxe_doc>
+		</time>
+		<cpuTime public="1" set="method" static="1">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>Gives the most precise timestamp value available (in seconds),
+		but only accounts for the actual time spent running on the CPU for the current thread/process.</haxe_doc>
+		</cpuTime>
+		<executablePath public="1" set="method" static="1">
+			<f a=""><c path="String"/></f>
+			<meta><m n=":deprecated"><e>"Use programPath instead"</e></m></meta>
+			<haxe_doc>Returns the path to the current executable that we are running.</haxe_doc>
+		</executablePath>
+		<programPath public="1" set="method" static="1">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Returns the absolute path to the current program file that we are running.
+		Concretely, for an executable binary, it returns the path to the binary.
+		For a script (e.g. a PHP file), it returns the path to the script.</haxe_doc>
+		</programPath>
+		<getChar public="1" set="method" static="1">
+			<f a="echo">
+				<x path="Bool"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Reads a single input character from the standard input and returns it.
+		Setting `echo` to `true` will also display the character on the output.</haxe_doc>
+		</getChar>
+		<stdin public="1" set="method" static="1">
+			<f a=""><c path="haxe.io.Input"/></f>
+			<haxe_doc>Returns the standard input of the process, from which user input can be read.
+		Usually it will block until the user sends a full input line.
+		See `getChar` for an alternative.</haxe_doc>
+		</stdin>
+		<stdout public="1" set="method" static="1">
+			<f a=""><c path="haxe.io.Output"/></f>
+			<haxe_doc>Returns the standard output of the process, to which program output can be written.</haxe_doc>
+		</stdout>
+		<stderr public="1" set="method" static="1">
+			<f a=""><c path="haxe.io.Output"/></f>
+			<haxe_doc>Returns the standard error of the process, to which program errors can be written.</haxe_doc>
+		</stderr>
+		<haxe_doc>This class provides access to various base functions of system platforms.
+	Look in the `sys` package for more system APIs.</haxe_doc>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":require"><e>sys</e></m>
+		</meta>
+	</class>
+	<class path="Type" params="" file="/usr/share/haxe/std/Type.hx" extern="1">
+		<getClass public="1" params="T" set="method" static="1">
+			<f a="o">
+				<c path="getClass.T"/>
+				<x path="Class"><c path="getClass.T"/></x>
+			</f>
+			<haxe_doc>Returns the class of `o`, if `o` is a class instance.
+
+		If `o` is null or of a different type, null is returned.
+
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getClass>
+		<getEnum public="1" set="method" static="1">
+			<f a="o">
+				<x path="EnumValue"/>
+				<x path="Enum"><d/></x>
+			</f>
+			<haxe_doc><![CDATA[Returns the enum of enum instance `o`.
+
+		An enum instance is the result of using an enum constructor. Given an
+		`enum Color { Red; }`, `getEnum(Red)` returns `Enum<Color>`.
+
+		If `o` is null, null is returned.
+
+		In general, type parameter information cannot be obtained at runtime.]]></haxe_doc>
+		</getEnum>
+		<getSuperClass public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<x path="Class"><d/></x>
+			</f>
+			<haxe_doc>Returns the super-class of class `c`.
+
+		If `c` has no super class, null is returned.
+
+		If `c` is null, the result is unspecified.
+
+		In general, type parameter information cannot be obtained at runtime.</haxe_doc>
+		</getSuperClass>
+		<getClassName public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of class `c`, including its path.
+
+		If `c` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the class name:
+		`pack1.pack2.(...).packN.ClassName`
+		If `c` is a sub-type of a Haxe module, that module is not part of the
+		package structure.
+
+		If `c` has no package, the class name is returned.
+
+		If `c` is null, the result is unspecified.
+
+		The class name does not include any type parameters.</haxe_doc>
+		</getClassName>
+		<getEnumName public="1" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><d/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of enum `e`, including its path.
+
+		If `e` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the enum name:
+		`pack1.pack2.(...).packN.EnumName`
+		If `e` is a sub-type of a Haxe module, that module is not part of the
+		package structure.
+
+		If `e` has no package, the enum name is returned.
+
+		If `e` is null, the result is unspecified.
+
+		The enum name does not include any type parameters.</haxe_doc>
+		</getEnumName>
+		<resolveClass public="1" set="method" static="1">
+			<f a="name">
+				<c path="String"/>
+				<x path="Class"><d/></x>
+			</f>
+			<haxe_doc>Resolves a class by name.
+
+		If `name` is the path of an existing class, that class is returned.
+
+		Otherwise null is returned.
+
+		If `name` is null or the path to a different type, the result is
+		unspecified.
+
+		The class name must not include any type parameters.</haxe_doc>
+		</resolveClass>
+		<resolveEnum public="1" set="method" static="1">
+			<f a="name">
+				<c path="String"/>
+				<x path="Enum"><d/></x>
+			</f>
+			<haxe_doc>Resolves an enum by name.
+
+		If `name` is the path of an existing enum, that enum is returned.
+
+		Otherwise null is returned.
+
+		If `name` is null the result is unspecified.
+
+		If `name` is the path to a different type, null is returned.
+
+		The enum name must not include any type parameters.</haxe_doc>
+		</resolveEnum>
+		<createInstance public="1" params="T" set="method" static="1">
+			<f a="cl:args">
+				<x path="Class"><c path="createInstance.T"/></x>
+				<c path="Array"><d/></c>
+				<c path="createInstance.T"/>
+			</f>
+			<haxe_doc>Creates an instance of class `cl`, using `args` as arguments to the
+		class constructor.
+
+		This function guarantees that the class constructor is called.
+
+		Default values of constructors arguments are not guaranteed to be
+		taken into account.
+
+		If `cl` or `args` are null, or if the number of elements in `args` does
+		not match the expected number of constructor arguments, or if any
+		argument has an invalid type,  or if `cl` has no own constructor, the
+		result is unspecified.
+
+		In particular, default values of constructor arguments are not
+		guaranteed to be taken into account.</haxe_doc>
+		</createInstance>
+		<createEmptyInstance public="1" params="T" set="method" static="1">
+			<f a="cl">
+				<x path="Class"><c path="createEmptyInstance.T"/></x>
+				<c path="createEmptyInstance.T"/>
+			</f>
+			<haxe_doc>Creates an instance of class `cl`.
+
+		This function guarantees that the class constructor is not called.
+
+		If `cl` is null, the result is unspecified.</haxe_doc>
+		</createEmptyInstance>
+		<createEnum public="1" params="T" set="method" static="1">
+			<f a="e:constr:?params">
+				<x path="Enum"><c path="createEnum.T"/></x>
+				<c path="String"/>
+				<c path="Array"><d/></c>
+				<c path="createEnum.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor `constr` with
+		arguments `params`.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createEnum>
+		<createEnumIndex public="1" params="T" set="method" static="1">
+			<f a="e:index:?params">
+				<x path="Enum"><c path="createEnumIndex.T"/></x>
+				<x path="Int"/>
+				<c path="Array"><d/></c>
+				<c path="createEnumIndex.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor number
+		`index` with arguments `params`.
+
+		The constructor indices are preserved from Haxe syntax, so the first
+		declared is index 0, the next index 1 etc.
+
+		If `e` or `constr` is null, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createEnumIndex>
+		<getInstanceFields public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the instance fields of class `c`, including
+		inherited fields.
+
+		This only includes fields which are known at compile-time. In
+		particular, using `getInstanceFields(getClass(obj))` will not include
+		any fields which were added to `obj` at runtime.
+
+		The order of the fields in the returned Array is unspecified.
+
+		If `c` is null, the result is unspecified.
+
+		(As3) This method only returns instance fields that are public.</haxe_doc>
+		</getInstanceFields>
+		<getClassFields public="1" set="method" static="1">
+			<f a="c">
+				<x path="Class"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of static fields of class `c`.
+
+		This does not include static fields of parent classes.
+
+		The order of the fields in the returned Array is unspecified.
+
+		If `c` is null, the result is unspecified.
+
+		(As3) This method only returns class fields that are public.</haxe_doc>
+		</getClassFields>
+		<getEnumConstructs public="1" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><d/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the names of all constructors of enum `e`.
+
+		The order of the constructor names in the returned Array is preserved
+		from the original syntax.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</getEnumConstructs>
+		<typeof public="1" set="method" static="1">
+			<f a="v">
+				<d/>
+				<e path="ValueType"/>
+			</f>
+			<haxe_doc>Returns the runtime type of value `v`.
+
+		The result corresponds to the type `v` has at runtime, which may vary
+		per platform. Assumptions regarding this should be minimized to avoid
+		surprises.</haxe_doc>
+		</typeof>
+		<enumEq public="1" params="T" set="method" static="1">
+			<f a="a:b">
+				<c path="enumEq.T"/>
+				<c path="enumEq.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Recursively compares two enum instances `a` and `b` by value.
+
+		Unlike `a == b`, this function performs a deep equality check on the
+		arguments of the constructors, if exists.
+
+		If `a` or `b` are null, the result is unspecified.</haxe_doc>
+		</enumEq>
+		<enumConstructor public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the constructor name of enum instance `e`.
+
+		The result String does not contain any constructor arguments.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumConstructor>
+		<enumParameters public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="Array"><d/></c>
+			</f>
+			<haxe_doc>Returns a list of the constructor arguments of enum instance `e`.
+
+		If `e` has no arguments, the result is [].
+
+		Otherwise the result are the values that were used as arguments to `e`,
+		in the order of their declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumParameters>
+		<enumIndex public="1" set="method" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the index of enum instance `e`.
+
+		This corresponds to the original syntactic position of `e`. The index of
+		the first declared constructor is 0, the next one is 1 etc.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</enumIndex>
+		<allEnums public="1" params="T" set="method" static="1">
+			<f a="e">
+				<x path="Enum"><c path="allEnums.T"/></x>
+				<c path="Array"><c path="allEnums.T"/></c>
+			</f>
+			<haxe_doc>Returns a list of all constructors of enum `e` that require no
+		arguments.
+
+		This may return the empty Array `[]` if all constructors of `e` require
+		arguments.
+
+		Otherwise an instance of `e` constructed through each of its non-
+		argument constructors is returned, in the order of the constructor
+		declaration.
+
+		If `e` is null, the result is unspecified.</haxe_doc>
+		</allEnums>
+		<haxe_doc>The Haxe Reflection API allows retrieval of type information at runtime.
+
+	This class complements the more lightweight Reflect class, with a focus on
+	class and enum instances.
+
+	@see https://haxe.org/manual/types.html
+	@see https://haxe.org/manual/std-reflection.html</haxe_doc>
+	</class>
+	<class path="benched.Benched" params="" file="src/benched/Benched.hx">
+		<minSecondsPerSample>
+			<x path="Float"/>
+			<haxe_doc>How long a process must take to count as a sample. If the sample takes
+     less time than this, it will be repeated until it this time is completed</haxe_doc>
+		</minSecondsPerSample>
+		<samplesPerBenchmark>
+			<x path="Int"/>
+			<haxe_doc>How many samples we must collect from each benchmark until we are satisfied
+     that we have a respresentative population</haxe_doc>
+		</samplesPerBenchmark>
+		<benchmarks>
+			<c path="haxe.ds.StringMap"><x path="benched.BenchmarkResults"/></c>
+			<haxe_doc>All our benchmarks</haxe_doc>
+		</benchmarks>
+		<verbose>
+			<x path="Bool"/>
+			<haxe_doc>Whether or not to print progress information</haxe_doc>
+		</verbose>
+		<stamp get="inline" set="null" line="65"><f a=""><x path="Float"/></f></stamp>
+		<print set="method" line="73"><f a="s">
+	<c path="String"/>
+	<x path="Void"/>
+</f></print>
+		<println set="method" line="83"><f a="s">
+	<c path="String"/>
+	<x path="Void"/>
+</f></println>
+		<benchmark public="1" set="method" line="101">
+			<f a="name:f">
+				<c path="String"/>
+				<f a=""><x path="Void"/></f>
+				<x path="benched.BenchmarkResults"/>
+			</f>
+			<haxe_doc>Benchmark the function `f`, storing the results to be processed later.
+    **Note**: `f` should be _as pure as possible_, because it will be run
+    numerous times so as to collect enough sampling data
+    @param name the name of the benchmark
+    @param f a callback to benchmark with
+    @return BenchmarkResults</haxe_doc>
+		</benchmark>
+		<formatReport set="method" line="158"><f a="benches">
+	<c path="Array"><a>
+	<results><x path="benched.BenchmarkResults"/></results>
+	<name><c path="String"/></name>
+</a></c>
+	<c path="String"/>
+</f></formatReport>
+		<formatReportWithChanges set="method" line="174"><f a="benches:old:differences">
+	<c path="Array"><a>
+	<results><x path="benched.BenchmarkResults"/></results>
+	<name><c path="String"/></name>
+</a></c>
+	<c path="haxe.ds.StringMap"><x path="benched.BenchmarkResults"/></c>
+	<c path="haxe.ds.StringMap"><c path="String"/></c>
+	<c path="String"/>
+</f></formatReportWithChanges>
+		<generateReport public="1" set="method" line="202">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>Generate a [Markdown table](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) of all the benchmarked results
+    @return String</haxe_doc>
+		</generateReport>
+		<generateComparisonReport public="1" set="method" line="215">
+			<f a="old">
+				<c path="benched.Benched"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>If you change your code and generate a new benchmark, use this to compare the changes to see if the changes had
+    a statistically significant effect. Generally this is done by serializing a `Benched` instance, changing the code,
+    re-running benchmarks, and then deserializing the old benchmarks, and supplying them to this function
+    @param old The previous run of the same benchmarks, with possibly different implementations
+    @return String</haxe_doc>
+		</generateComparisonReport>
+		<new public="1" set="method" line="58">
+			<f a="?minSecondsPerSample:?samplesPerBenchmark:?verbose" v="0.5:50:false">
+				<x path="Float"/>
+				<x path="Int"/>
+				<x path="Bool"/>
+				<x path="Void"/>
+			</f>
+			<meta><m n=":value"><e>{ verbose : false, samplesPerBenchmark : 50, minSecondsPerSample : 0.5 }</e></m></meta>
+			<haxe_doc>Create a new benchmark suite
+     @param minSecondsPerSample how much time must accumulate by repeating the benchmark until a sample is counted
+     @param samplesPerBenchmark how many samples to collect per benchmark
+     @param verbose whether or not to print progress information</haxe_doc>
+		</new>
+		<haxe_doc>Utility to run benchmarks and collect samples</haxe_doc>
+	</class>
+	<abstract path="benched.BenchmarkResults" params="" file="src/benched/BenchmarkResults.hx">
+		<this><c path="Array"><x path="Float"/></c></this>
+		<haxe_doc>A collection of values representing a timing sample</haxe_doc>
+		<meta>
+			<m n=":forward"/>
+			<m n=":allow"><e>benched.Benched</e></m>
+		</meta>
+		<impl><class path="benched._BenchmarkResults.BenchmarkResults_Impl_" params="" file="src/benched/BenchmarkResults.hx" private="1" module="benched.BenchmarkResults">
+	<mean public="1" get="accessor" set="null" static="1">
+		<x path="Float"/>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>The mean of the sample</haxe_doc>
+	</mean>
+	<std public="1" get="accessor" set="null" static="1">
+		<x path="Float"/>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>The standard distribution of the sample</haxe_doc>
+	</std>
+	<variance public="1" get="accessor" set="null" static="1">
+		<x path="Float"/>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>The variance of the sample</haxe_doc>
+	</variance>
+	<_new set="method" line="46" static="1">
+		<f a="results">
+			<c path="Array"><x path="Float"/></c>
+			<x path="benched.BenchmarkResults"/>
+		</f>
+		<meta>
+			<m n=":impl"/>
+			<m n=":noCompletion"/>
+		</meta>
+		<haxe_doc>Create a new result, which is a list of timings in seconds
+     @param results</haxe_doc>
+	</_new>
+	<isMeanDifferent public="1" set="method" line="57" static="1">
+		<f a="this:other">
+			<c path="Array"><x path="Float"/></c>
+			<x path="benched.BenchmarkResults"/>
+			<x path="Bool"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Calculate whether the means of the two results are statistically different
+     with `α = 0.05` (`p = 0.95`). Returns `true` if the means are statistically
+     different
+     @param other the other result to compare against.
+     @return Bool</haxe_doc>
+	</isMeanDifferent>
+	<get_mean set="method" line="72" static="1">
+		<f a="this">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_mean>
+	<get_std set="method" line="80" static="1">
+		<f a="this">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_std>
+	<get_variance set="method" line="84" static="1">
+		<f a="this">
+			<c path="Array"><x path="Float"/></c>
+			<x path="Float"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+	</get_variance>
+	<floatToStringPrecision set="method" line="94" static="1"><f a="n:prec">
+	<x path="Float"/>
+	<x path="Int"/>
+	<c path="String"/>
+</f></floatToStringPrecision>
+	<log10 set="method" line="110" static="1"><f a="x">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></log10>
+	<display_eng set="method" line="114" static="1"><f a="x:unit">
+	<x path="Float"/>
+	<c path="String"/>
+	<c path="String"/>
+</f></display_eng>
+	<toString public="1" set="method" line="138" static="1">
+		<f a="this">
+			<c path="Array"><x path="Float"/></c>
+			<c path="String"/>
+		</f>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>Display the results as the mean timing with an error, both in engineering notation
+     @return String</haxe_doc>
+	</toString>
+	<meta>
+		<m n=":directlyUsed"/>
+		<m n=":allow"><e>benched.Benched</e></m>
+	</meta>
+</class></impl>
+	</abstract>
+	<class path="benched._BenchmarkResults.BenchmarkResults_Impl_" params="" file="src/benched/BenchmarkResults.hx" private="1" module="benched.BenchmarkResults">
+		<mean public="1" get="accessor" set="null" static="1">
+			<x path="Float"/>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>The mean of the sample</haxe_doc>
+		</mean>
+		<std public="1" get="accessor" set="null" static="1">
+			<x path="Float"/>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>The standard distribution of the sample</haxe_doc>
+		</std>
+		<variance public="1" get="accessor" set="null" static="1">
+			<x path="Float"/>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>The variance of the sample</haxe_doc>
+		</variance>
+		<_new set="method" line="46" static="1">
+			<f a="results">
+				<c path="Array"><x path="Float"/></c>
+				<x path="benched.BenchmarkResults"/>
+			</f>
+			<meta>
+				<m n=":impl"/>
+				<m n=":noCompletion"/>
+			</meta>
+			<haxe_doc>Create a new result, which is a list of timings in seconds
+     @param results</haxe_doc>
+		</_new>
+		<isMeanDifferent public="1" set="method" line="57" static="1">
+			<f a="this:other">
+				<c path="Array"><x path="Float"/></c>
+				<x path="benched.BenchmarkResults"/>
+				<x path="Bool"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Calculate whether the means of the two results are statistically different
+     with `α = 0.05` (`p = 0.95`). Returns `true` if the means are statistically
+     different
+     @param other the other result to compare against.
+     @return Bool</haxe_doc>
+		</isMeanDifferent>
+		<get_mean set="method" line="72" static="1">
+			<f a="this">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_mean>
+		<get_std set="method" line="80" static="1">
+			<f a="this">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_std>
+		<get_variance set="method" line="84" static="1">
+			<f a="this">
+				<c path="Array"><x path="Float"/></c>
+				<x path="Float"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+		</get_variance>
+		<floatToStringPrecision set="method" line="94" static="1"><f a="n:prec">
+	<x path="Float"/>
+	<x path="Int"/>
+	<c path="String"/>
+</f></floatToStringPrecision>
+		<log10 set="method" line="110" static="1"><f a="x">
+	<x path="Float"/>
+	<x path="Float"/>
+</f></log10>
+		<display_eng set="method" line="114" static="1"><f a="x:unit">
+	<x path="Float"/>
+	<c path="String"/>
+	<c path="String"/>
+</f></display_eng>
+		<toString public="1" set="method" line="138" static="1">
+			<f a="this">
+				<c path="Array"><x path="Float"/></c>
+				<c path="String"/>
+			</f>
+			<meta><m n=":impl"/></meta>
+			<haxe_doc>Display the results as the mean timing with an error, both in engineering notation
+     @return String</haxe_doc>
+		</toString>
+		<meta>
+			<m n=":directlyUsed"/>
+			<m n=":allow"><e>benched.Benched</e></m>
+		</meta>
+	</class>
+	<abstract path="haxe.Function" params="" file="/usr/share/haxe/std/haxe/Constraints.hx" module="haxe.Constraints">
+		<this><d/></this>
+		<haxe_doc>This type unifies with any function type.
+
+	It is intended to be used as a type parameter constraint. If used as a real
+	type, the underlying type will be `Dynamic`.</haxe_doc>
+		<meta><m n=":callable"/></meta>
+		<impl><class path="haxe._Constraints.Function_Impl_" params="" file="/usr/share/haxe/std/haxe/Constraints.hx" private="1" module="haxe.Constraints"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.FlatEnum" params="" file="/usr/share/haxe/std/haxe/Constraints.hx" module="haxe.Constraints">
+		<this><d/></this>
+		<haxe_doc>This type unifies with an enum instance if all constructors of the enum
+	require no arguments.
+
+	It is intended to be used as a type parameter constraint. If used as a real
+	type, the underlying type will be `Dynamic`.</haxe_doc>
+		<impl><class path="haxe._Constraints.FlatEnum_Impl_" params="" file="/usr/share/haxe/std/haxe/Constraints.hx" private="1" module="haxe.Constraints"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.Constructible" params="T" file="/usr/share/haxe/std/haxe/Constraints.hx" module="haxe.Constraints">
+		<this><d/></this>
+		<haxe_doc><![CDATA[This type unifies with any instance of classes that have a constructor
+	which
+
+	  * is `public` and
+	  * unifies with the type used for type parameter `T`.
+
+	If a type parameter `A` is assigned to a type parameter `B` which is constrained
+	to `Constructible<T>`, A must be explicitly constrained to
+	`Constructible<T>` as well.
+
+	It is intended to be used as a type parameter constraint. If used as a real
+	type, the underlying type will be `Dynamic`.]]></haxe_doc>
+		<impl><class path="haxe._Constraints.Constructible_Impl_" params="" file="/usr/share/haxe/std/haxe/Constraints.hx" private="1" module="haxe.Constraints"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe.IMap" params="K:V" file="/usr/share/haxe/std/haxe/Constraints.hx" module="haxe.Constraints" interface="1"><meta><m n=":keep"/></meta></class>
+	<class path="haxe.EntryPoint" params="" file="/usr/share/haxe/std/haxe/EntryPoint.hx">
+		<pending expr="new Array&lt;Void&gt;()" line="40" static="1">
+			<c path="Array"><f a=""><x path="Void"/></f></c>
+			<meta><m n=":value"><e><![CDATA[new Array<Void>()]]></e></m></meta>
+		</pending>
+		<threadCount public="1" set="null" expr="0" line="41" static="1">
+			<x path="Int"/>
+			<meta><m n=":value"><e>0</e></m></meta>
+		</threadCount>
+		<processEvents set="method" line="85" static="1"><f a=""><x path="Float"/></f></processEvents>
+		<run public="1" set="method" line="108" static="1">
+			<f a=""><x path="Void"/></f>
+			<meta><m n=":keep"/></meta>
+			<haxe_doc>Start the main loop. Depending on the platform, this can return immediately or will only return when the application exits.</haxe_doc>
+		</run>
+		<haxe_doc>If `haxe.MainLoop` is kept from DCE, then we will insert an `haxe.EntryPoint.run()` call just at then end of `main()`.
+	This class can be redefined by custom frameworks so they can handle their own main loop logic.</haxe_doc>
+		<meta><m n=":keep"/></meta>
+	</class>
+	<class path="haxe.EnumTools" params="" file="/usr/share/haxe/std/haxe/EnumTools.hx" extern="1">
+		<getName public="1" params="T" get="inline" set="null" line="52" static="1">
+			<f a="e">
+				<x path="Enum"><c path="getName.T"/></x>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the name of enum `e`, including its path.
+
+		If `e` is inside a package, the package structure is returned dot-
+		separated, with another dot separating the enum name:
+		
+			pack1.pack2.(...).packN.EnumName
+
+		If `e` is a sub-type of a Haxe module, that module is not part of the
+		package structure.
+
+		If `e` has no package, the enum name is returned.
+
+		If `e` is `null`, the result is unspecified.
+
+		The enum name does not include any type parameters.</haxe_doc>
+		</getName>
+		<createByName public="1" params="T" get="inline" set="null" line="65" static="1">
+			<f a="e:constr:?params">
+				<x path="Enum"><c path="createByName.T"/></x>
+				<c path="String"/>
+				<c path="Array"><d/></c>
+				<c path="createByName.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor `constr` with
+		arguments `params`.
+
+		If `e` or `constr` is `null`, or if enum `e` has no constructor named
+		`constr`, or if the number of elements in `params` does not match the
+		expected number of constructor arguments, or if any argument has an
+		invalid type, the result is unspecified.</haxe_doc>
+		</createByName>
+		<createByIndex public="1" params="T" get="inline" set="null" line="81" static="1">
+			<f a="e:index:?params">
+				<x path="Enum"><c path="createByIndex.T"/></x>
+				<x path="Int"/>
+				<c path="Array"><d/></c>
+				<c path="createByIndex.T"/>
+			</f>
+			<haxe_doc>Creates an instance of enum `e` by calling its constructor number
+		`index` with arguments `params`.
+
+		The constructor indices are preserved from Haxe syntax, so the first
+		declared is index 0, the next index 1 etc.
+
+		If `e` or `index` is `null`, or if enum `e` has no constructor
+		corresponding to index `index`, or if the number of elements in `params`
+		does not match the expected number of constructor arguments, or if any
+		argument has an invalid type, the result is unspecified.</haxe_doc>
+		</createByIndex>
+		<createAll public="1" params="T" get="inline" set="null" line="98" static="1">
+			<f a="e">
+				<x path="Enum"><c path="createAll.T"/></x>
+				<c path="Array"><c path="createAll.T"/></c>
+			</f>
+			<haxe_doc>Returns a list of all constructors of enum `e` that require no
+		arguments.
+
+		This may return the empty Array `[]` if all constructors of `e` require
+		arguments.
+
+		Otherwise an instance of `e` constructed through each of its non-
+		argument constructors is returned, in the order of the constructor
+		declaration.
+
+		If `e` is `null`, the result is unspecified.</haxe_doc>
+		</createAll>
+		<getConstructors public="1" params="T" get="inline" set="null" line="110" static="1">
+			<f a="e">
+				<x path="Enum"><c path="getConstructors.T"/></x>
+				<c path="Array"><c path="String"/></c>
+			</f>
+			<haxe_doc>Returns a list of the names of all constructors of enum `e`.
+
+		The order of the constructor names in the returned Array is preserved
+		from the original syntax.
+
+		If `c` is `null`, the result is unspecified.</haxe_doc>
+		</getConstructors>
+		<haxe_doc>This class provides advanced methods on enums. It is ideally used with
+	`using EnumTools` and then acts as an
+	  [extension](https://haxe.org/manual/lf-static-extension.html) to the
+	  `enum` types.
+
+	If the first argument to any of the methods is `null`, the result is
+	unspecified.</haxe_doc>
+	</class>
+	<class path="haxe.EnumValueTools" params="" file="/usr/share/haxe/std/haxe/EnumTools.hx" module="haxe.EnumTools" extern="1">
+		<equals public="1" params="T" get="inline" set="null" line="133" static="1">
+			<f a="a:b">
+				<c path="equals.T"/>
+				<c path="equals.T"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>Recursively compares two enum instances `a` and `b` by value.
+
+		Unlike `a == b`, this function performs a deep equality check on the
+		arguments of the constructors (if there are any).
+
+		If `a` or `b` are `null`, the result is unspecified.</haxe_doc>
+		</equals>
+		<getName public="1" get="inline" set="null" line="144" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="String"/>
+			</f>
+			<haxe_doc>Returns the constructor name of enum instance `e`.
+
+		The result String does not contain any constructor arguments.
+
+		If `e` is `null`, the result is unspecified.</haxe_doc>
+		</getName>
+		<getParameters public="1" get="inline" set="null" line="158" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<c path="Array"><d/></c>
+			</f>
+			<haxe_doc>Returns a list of the constructor arguments of enum instance `e`.
+
+		If `e` has no arguments, the result is `[]`.
+
+		Otherwise the result are the values that were used as arguments to `e`,
+		in the order of their declaration.
+
+		If `e` is `null`, the result is unspecified.</haxe_doc>
+		</getParameters>
+		<getIndex public="1" get="inline" set="null" line="170" static="1">
+			<f a="e">
+				<x path="EnumValue"/>
+				<x path="Int"/>
+			</f>
+			<haxe_doc>Returns the index of enum instance `e`.
+
+		This corresponds to the original syntactic position of `e`. The index of
+		the first declared constructor is 0, the next one is 1 etc.
+
+		If `e` is `null`, the result is unspecified.</haxe_doc>
+		</getIndex>
+		<haxe_doc>This class provides advanced methods on enum values. It is ideally used with
+	`using EnumValueTools` and then acts as an
+	  [extension](https://haxe.org/manual/lf-static-extension.html) to the
+	  `EnumValue` types.
+
+	If the first argument to any of the methods is `null`, the result is
+	unspecified.</haxe_doc>
+	</class>
+	<abstract path="haxe.Int32" params="" file="/usr/share/haxe/std/haxe/Int32.hx">
+		<from><icast><x path="Int"/></icast></from>
+		<this><x path="Int"/></this>
+		<to>
+			<icast><x path="Int"/></icast>
+			<icast field="toFloat"><x path="Float"/></icast>
+		</to>
+		<haxe_doc>Int32 provides a 32-bit integer with consistent overflow behavior across
+	all platforms.</haxe_doc>
+		<impl><class path="haxe._Int32.Int32_Impl_" params="" file="/usr/share/haxe/std/haxe/Int32.hx" private="1" module="haxe.Int32"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<abstract path="haxe.Int64" params="" file="/usr/share/haxe/std/haxe/Int64.hx">
+		<from>
+			<icast><t path="haxe._Int64.__Int64"/></icast>
+			<icast field="ofInt"><x path="Int"/></icast>
+		</from>
+		<this><t path="haxe._Int64.__Int64"/></this>
+		<to><icast><t path="haxe._Int64.__Int64"/></icast></to>
+		<haxe_doc>A cross-platform signed 64-bit integer.
+	Int64 instances can be created from two 32-bit words using `Int64.make()`.</haxe_doc>
+		<impl><class path="haxe._Int64.Int64_Impl_" params="" file="/usr/share/haxe/std/haxe/Int64.hx" private="1" module="haxe.Int64">
+	<high public="1" get="accessor" set="null" static="1">
+		<x path="haxe.Int32"/>
+		<meta><m n=":impl"/></meta>
+	</high>
+	<low public="1" get="accessor" set="null" static="1">
+		<x path="haxe.Int32"/>
+		<meta><m n=":impl"/></meta>
+	</low>
+	<meta><m n=":keep"/></meta>
+</class></impl>
+	</abstract>
+	<typedef path="haxe._Int64.__Int64" params="" file="/usr/share/haxe/std/haxe/Int64.hx" private="1" module="haxe.Int64">
+		<c path="haxe._Int64.___Int64"/>
+		<haxe_doc>This typedef will fool `@:coreApi` into thinking that we are using
+	the same underlying type, even though it might be different on
+	specific platforms.</haxe_doc>
+	</typedef>
+	<class path="haxe.MainEvent" params="" file="/usr/share/haxe/std/haxe/MainLoop.hx" module="haxe.MainLoop">
+		<f><f a=""><x path="Void"/></f></f>
+		<prev><c path="haxe.MainEvent"/></prev>
+		<next><c path="haxe.MainEvent"/></next>
+		<isBlocking public="1" expr="true">
+			<x path="Bool"/>
+			<meta><m n=":value"><e>true</e></m></meta>
+			<haxe_doc>Tells if the event can lock the process from exiting (default:true)</haxe_doc>
+		</isBlocking>
+		<nextRun public="1" set="null"><x path="Float"/></nextRun>
+		<priority public="1" set="null"><x path="Int"/></priority>
+		<new set="method" line="18"><f a="f:p">
+	<f a=""><x path="Void"/></f>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></new>
+		<meta><m n=":keep"/></meta>
+	</class>
+	<class path="haxe.MainLoop" params="" file="/usr/share/haxe/std/haxe/MainLoop.hx">
+		<pending static="1"><c path="haxe.MainEvent"/></pending>
+		<threadCount public="1" get="null" set="null" static="1"><x path="Int"/></threadCount>
+		<hasEvents public="1" set="method" line="66" static="1"><f a=""><x path="Bool"/></f></hasEvents>
+		<sortEvents set="method" line="99" static="1"><f a=""><x path="Void"/></f></sortEvents>
+		<tick set="method" line="164" static="1">
+			<f a=""><x path="Float"/></f>
+			<haxe_doc>Run the pending events. Return the time for next event.</haxe_doc>
+		</tick>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+			<m n=":access"><e>haxe.MainEvent</e></m>
+		</meta>
+	</class>
+	<typedef path="haxe.PosInfos" params="" file="/usr/share/haxe/std/haxe/PosInfos.hx">
+		<a>
+			<methodName><c path="String"/></methodName>
+			<lineNumber><x path="Int"/></lineNumber>
+			<fileName><c path="String"/></fileName>
+			<customParams>
+				<x path="Null"><c path="Array"><d/></c></x>
+				<meta><m n=":optional"/></meta>
+			</customParams>
+			<className><c path="String"/></className>
+		</a>
+		<haxe_doc>`PosInfos` is a magic type which can be used to generate position information
+	into the output for debugging use.
+
+	If a function has a final optional argument of this type, i.e.
+	`(..., ?pos:haxe.PosInfos)`, each call to that function which does not assign
+	a value to that argument has its position added as call argument.
+
+	This can be used to track positions of calls in e.g. a unit testing
+	framework.</haxe_doc>
+	</typedef>
+	<class path="haxe.ds.ArraySort" params="" file="/usr/share/haxe/std/haxe/ds/ArraySort.hx">
+		<sort public="1" params="T" set="method" line="42" static="1">
+			<f a="a:cmp">
+				<c path="Array"><c path="sort.T"/></c>
+				<f a=":">
+					<c path="sort.T"/>
+					<c path="sort.T"/>
+					<x path="Int"/>
+				</f>
+				<x path="Void"/>
+			</f>
+			<haxe_doc><![CDATA[Sorts Array `a` according to the comparison function `cmp`, where
+		`cmp(x,y)` returns 0 if `x == y`, a positive Int if `x > y` and a
+		negative Int if `x < y`.
+
+		This operation modifies Array `a` in place.
+
+		This operation is stable: The order of equal elements is preserved.
+
+		If `a` or `cmp` are null, the result is unspecified.]]></haxe_doc>
+		</sort>
+		<rec params="T" set="method" line="46" static="1"><f a="a:cmp:from:to">
+	<c path="Array"><c path="rec.T"/></c>
+	<f a=":">
+		<c path="rec.T"/>
+		<c path="rec.T"/>
+		<x path="Int"/>
+	</f>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></rec>
+		<doMerge params="T" set="method" line="68" static="1"><f a="a:cmp:from:pivot:to:len1:len2">
+	<c path="Array"><c path="doMerge.T"/></c>
+	<f a=":">
+		<c path="doMerge.T"/>
+		<c path="doMerge.T"/>
+		<x path="Int"/>
+	</f>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></doMerge>
+		<rotate params="T" set="method" line="94" static="1"><f a="a:cmp:from:mid:to">
+	<c path="Array"><c path="rotate.T"/></c>
+	<f a=":">
+		<c path="rotate.T"/>
+		<c path="rotate.T"/>
+		<x path="Int"/>
+	</f>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></rotate>
+		<gcd set="method" line="115" static="1"><f a="m:n">
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></gcd>
+		<upper params="T" set="method" line="124" static="1"><f a="a:cmp:from:to:val">
+	<c path="Array"><c path="upper.T"/></c>
+	<f a=":">
+		<c path="upper.T"/>
+		<c path="upper.T"/>
+		<x path="Int"/>
+	</f>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></upper>
+		<lower params="T" set="method" line="139" static="1"><f a="a:cmp:from:to:val">
+	<c path="Array"><c path="lower.T"/></c>
+	<f a=":">
+		<c path="lower.T"/>
+		<c path="lower.T"/>
+		<x path="Int"/>
+	</f>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Int"/>
+</f></lower>
+		<swap params="T" set="method" line="153" static="1"><f a="a:i:j">
+	<c path="Array"><c path="swap.T"/></c>
+	<x path="Int"/>
+	<x path="Int"/>
+	<x path="Void"/>
+</f></swap>
+		<haxe_doc>ArraySort provides a stable implementation of merge sort through its `sort`
+	method. It should be used instead of `Array.sort` in cases where the order
+	of equal elements has to be retained on all targets.</haxe_doc>
+		<meta>
+			<m n=":keep"/>
+			<m n=":directlyUsed"/>
+		</meta>
+	</class>
+	<abstract path="haxe.ds.HashMap" params="K:V" file="/usr/share/haxe/std/haxe/ds/HashMap.hx">
+		<this><c path="haxe.ds._HashMap.HashMapData">
+	<c path="haxe.ds.HashMap.K"/>
+	<c path="haxe.ds.HashMap.V"/>
+</c></this>
+		<haxe_doc>HashMap allows mapping of hashable objects to arbitrary values.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+		<impl><class path="haxe.ds._HashMap.HashMap_Impl_" params="" file="/usr/share/haxe/std/haxe/ds/HashMap.hx" private="1" module="haxe.ds.HashMap"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe.ds.IntMap" params="T" file="/usr/share/haxe/std/haxe/ds/IntMap.hx" extern="1">
+		<implements path="haxe.IMap">
+			<x path="Int"/>
+			<c path="haxe.ds.IntMap.T"/>
+		</implements>
+		<set public="1" set="method">
+			<f a="key:value">
+				<x path="Int"/>
+				<c path="haxe.ds.IntMap.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>See `Map.set`</haxe_doc>
+		</set>
+		<get public="1" set="method">
+			<f a="key">
+				<x path="Int"/>
+				<x path="Null"><c path="haxe.ds.IntMap.T"/></x>
+			</f>
+			<haxe_doc>See `Map.get`</haxe_doc>
+		</get>
+		<exists public="1" set="method">
+			<f a="key">
+				<x path="Int"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.exists`</haxe_doc>
+		</exists>
+		<remove public="1" set="method">
+			<f a="key">
+				<x path="Int"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.remove`</haxe_doc>
+		</remove>
+		<keys public="1" set="method">
+			<f a=""><t path="Iterator"><x path="Int"/></t></f>
+			<haxe_doc>See `Map.keys`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</keys>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><c path="haxe.ds.IntMap.T"/></t></f>
+			<haxe_doc>See `Map.iterator`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</iterator>
+		<keyValueIterator public="1" set="method">
+			<f a=""><t path="KeyValueIterator">
+	<x path="Int"/>
+	<c path="haxe.ds.IntMap.T"/>
+</t></f>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method">
+			<f a=""><c path="haxe.ds.IntMap"><c path="haxe.ds.IntMap.T"/></c></f>
+			<haxe_doc>See `Map.copy`</haxe_doc>
+		</copy>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>See `Map.toString`</haxe_doc>
+		</toString>
+		<clear public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>See `Map.clear`</haxe_doc>
+		</clear>
+		<new public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new IntMap.</haxe_doc>
+		</new>
+		<haxe_doc>IntMap allows mapping of Int keys to arbitrary values.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+	</class>
+	<abstract path="haxe.ds.Map" params="K:V" file="/usr/share/haxe/std/haxe/ds/Map.hx">
+		<from>
+			<icast field="fromStringMap"><c path="haxe.ds.StringMap"><c path="fromStringMap.V"/></c></icast>
+			<icast field="fromIntMap"><c path="haxe.ds.IntMap"><c path="fromIntMap.V"/></c></icast>
+			<icast field="fromObjectMap"><c path="haxe.ds.ObjectMap">
+	<c path="fromObjectMap.K"/>
+	<c path="fromObjectMap.V"/>
+</c></icast>
+		</from>
+		<this><c path="haxe.IMap">
+	<c path="haxe.ds.Map.K"/>
+	<c path="haxe.ds.Map.V"/>
+</c></this>
+		<to>
+			<icast field="toStringMap"><c path="haxe.ds.StringMap"><c path="toStringMap.V"/></c></icast>
+			<icast field="toIntMap"><c path="haxe.ds.IntMap"><c path="toIntMap.V"/></c></icast>
+			<icast field="toEnumValueMapMap"><c path="haxe.ds.EnumValueMap">
+	<c path="toEnumValueMapMap.K"/>
+	<c path="toEnumValueMapMap.V"/>
+</c></icast>
+			<icast field="toObjectMap"><c path="haxe.ds.ObjectMap">
+	<c path="toObjectMap.K"/>
+	<c path="toObjectMap.V"/>
+</c></icast>
+		</to>
+		<haxe_doc><![CDATA[Map allows key to value mapping for arbitrary value types, and many key
+	types.
+
+	This is a multi-type abstract, it is instantiated as one of its
+	specialization types depending on its type parameters.
+
+	A Map can be instantiated without explicit type parameters. Type inference
+	will then determine the type parameters from the usage.
+
+	Maps can also be created with `[key1 => value1, key2 => value2]` syntax.
+
+	Map is an abstract type, it is not available at runtime.
+
+	@see https://haxe.org/manual/std-Map.html]]></haxe_doc>
+		<meta><m n=":multiType"><e>@:followWithAbstracts K</e></m></meta>
+		<impl><class path="haxe.ds._Map.Map_Impl_" params="" file="/usr/share/haxe/std/haxe/ds/Map.hx" private="1" module="haxe.ds.Map"><meta><m n=":keep"/></meta></class></impl>
+	</abstract>
+	<class path="haxe.ds.ObjectMap" params="K:V" file="/usr/share/haxe/std/haxe/ds/ObjectMap.hx" extern="1">
+		<implements path="haxe.IMap">
+			<c path="haxe.ds.ObjectMap.K"/>
+			<c path="haxe.ds.ObjectMap.V"/>
+		</implements>
+		<set public="1" set="method">
+			<f a="key:value">
+				<c path="haxe.ds.ObjectMap.K"/>
+				<c path="haxe.ds.ObjectMap.V"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>See `Map.set`</haxe_doc>
+		</set>
+		<get public="1" set="method">
+			<f a="key">
+				<c path="haxe.ds.ObjectMap.K"/>
+				<x path="Null"><c path="haxe.ds.ObjectMap.V"/></x>
+			</f>
+			<haxe_doc>See `Map.get`</haxe_doc>
+		</get>
+		<exists public="1" set="method">
+			<f a="key">
+				<c path="haxe.ds.ObjectMap.K"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.exists`</haxe_doc>
+		</exists>
+		<remove public="1" set="method">
+			<f a="key">
+				<c path="haxe.ds.ObjectMap.K"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.remove`</haxe_doc>
+		</remove>
+		<keys public="1" set="method">
+			<f a=""><t path="Iterator"><c path="haxe.ds.ObjectMap.K"/></t></f>
+			<haxe_doc>See `Map.keys`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</keys>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><c path="haxe.ds.ObjectMap.V"/></t></f>
+			<haxe_doc>See `Map.iterator`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</iterator>
+		<keyValueIterator public="1" set="method">
+			<f a=""><t path="KeyValueIterator">
+	<c path="haxe.ds.ObjectMap.K"/>
+	<c path="haxe.ds.ObjectMap.V"/>
+</t></f>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method">
+			<f a=""><c path="haxe.ds.ObjectMap">
+	<c path="haxe.ds.ObjectMap.K"/>
+	<c path="haxe.ds.ObjectMap.V"/>
+</c></f>
+			<haxe_doc>See `Map.copy`</haxe_doc>
+		</copy>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>See `Map.toString`</haxe_doc>
+		</toString>
+		<clear public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>See `Map.clear`</haxe_doc>
+		</clear>
+		<new public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new ObjectMap.</haxe_doc>
+		</new>
+		<haxe_doc>ObjectMap allows mapping of object keys to arbitrary values.
+
+	On static targets, the keys are considered to be strong references. Refer
+	to `haxe.ds.WeakMap` for a weak reference version.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+	</class>
+	<abstract path="haxe.ds.ReadOnlyArray" params="T" file="/usr/share/haxe/std/haxe/ds/ReadOnlyArray.hx">
+		<from><icast><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></icast></from>
+		<this><c path="Array"><c path="haxe.ds.ReadOnlyArray.T"/></c></this>
+		<haxe_doc>`ReadOnlyArray` is an abstract over an ordinary `Array` which only exposes
+	APIs that don't modify the instance, hence "read-only".
+
+	Note that this doesn't necessarily mean that the instance is *immutable*.
+	Other code holding a reference to the underlying `Array` can still modify it,
+	and the reference can be obtained with a `cast`.</haxe_doc>
+		<meta><m n=":forward">
+	<e>concat</e>
+	<e>copy</e>
+	<e>filter</e>
+	<e>indexOf</e>
+	<e>iterator</e>
+	<e>join</e>
+	<e>lastIndexOf</e>
+	<e>map</e>
+	<e>slice</e>
+	<e>toString</e>
+</m></meta>
+		<impl><class path="haxe.ds._ReadOnlyArray.ReadOnlyArray_Impl_" params="" file="/usr/share/haxe/std/haxe/ds/ReadOnlyArray.hx" private="1" module="haxe.ds.ReadOnlyArray">
+	<length public="1" get="accessor" set="null" static="1">
+		<x path="Int"/>
+		<meta><m n=":impl"/></meta>
+		<haxe_doc>The length of `this` Array.</haxe_doc>
+	</length>
+	<meta><m n=":keep"/></meta>
+</class></impl>
+	</abstract>
+	<class path="haxe.ds.StringMap" params="T" file="/usr/share/haxe/std/haxe/ds/StringMap.hx" extern="1">
+		<implements path="haxe.IMap">
+			<c path="String"/>
+			<c path="haxe.ds.StringMap.T"/>
+		</implements>
+		<set public="1" set="method">
+			<f a="key:value">
+				<c path="String"/>
+				<c path="haxe.ds.StringMap.T"/>
+				<x path="Void"/>
+			</f>
+			<haxe_doc>See `Map.set`</haxe_doc>
+		</set>
+		<get public="1" set="method">
+			<f a="key">
+				<c path="String"/>
+				<x path="Null"><c path="haxe.ds.StringMap.T"/></x>
+			</f>
+			<haxe_doc>See `Map.get`</haxe_doc>
+		</get>
+		<exists public="1" set="method">
+			<f a="key">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.exists`</haxe_doc>
+		</exists>
+		<remove public="1" set="method">
+			<f a="key">
+				<c path="String"/>
+				<x path="Bool"/>
+			</f>
+			<haxe_doc>See `Map.remove`</haxe_doc>
+		</remove>
+		<keys public="1" set="method">
+			<f a=""><t path="Iterator"><c path="String"/></t></f>
+			<haxe_doc>See `Map.keys`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</keys>
+		<iterator public="1" set="method">
+			<f a=""><t path="Iterator"><c path="haxe.ds.StringMap.T"/></t></f>
+			<haxe_doc>See `Map.iterator`
+
+		(cs, java) Implementation detail: Do not `set()` any new value while
+		iterating, as it may cause a resize, which will break iteration.</haxe_doc>
+		</iterator>
+		<keyValueIterator public="1" set="method">
+			<f a=""><t path="KeyValueIterator">
+	<c path="String"/>
+	<c path="haxe.ds.StringMap.T"/>
+</t></f>
+			<haxe_doc>See `Map.keyValueIterator`</haxe_doc>
+		</keyValueIterator>
+		<copy public="1" set="method">
+			<f a=""><c path="haxe.ds.StringMap"><c path="haxe.ds.StringMap.T"/></c></f>
+			<haxe_doc>See `Map.copy`</haxe_doc>
+		</copy>
+		<toString public="1" set="method">
+			<f a=""><c path="String"/></f>
+			<haxe_doc>See `Map.toString`</haxe_doc>
+		</toString>
+		<clear public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>See `Map.clear`</haxe_doc>
+		</clear>
+		<new public="1" set="method">
+			<f a=""><x path="Void"/></f>
+			<haxe_doc>Creates a new StringMap.</haxe_doc>
+		</new>
+		<haxe_doc>StringMap allows mapping of String keys to arbitrary values.
+
+	See `Map` for documentation details.
+
+	@see https://haxe.org/manual/std-Map.html</haxe_doc>
+		<meta><m n=":directlyUsed"/></meta>
+	</class>
+	<typedef path="haxe.io.BytesData" params="" file="/usr/share/haxe/std/haxe/io/BytesData.hx"><c path="Array"><x path="Int"/></c></typedef>
+</haxe>
