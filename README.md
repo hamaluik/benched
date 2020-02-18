@@ -43,6 +43,15 @@ class Fib {
 }
 ```
 
+This generates the following table:
+
+### Naive Implementation
+| Benchmark     |         Mean Time / Iteration |
+|:--------------|------------------------------:|
+| Fibonacci(1)  | `890.845 [ps] ± 106.758 [ps]` |
+| Fibonacci(5)  | ` 71.964 [ns] ±   5.057 [ns]` |
+| Fibonacci(10) | `838.539 [ns] ±  18.815 [ns]` |
+
 We notice this takes a bit of time, so we re-write the fibonacci function to not
 be recursive and hopefully faster:
 
@@ -87,25 +96,18 @@ class Fib {
 }
 ```
 
-### Sample Results
+This results in the following tables, showing that we've sped things up considerably!
 
-#### Naive Implementation
-| Benchmark     | Mean Time / Iteration      |
-|:--------------|:---------------------------|
-| Fibonacci(1)  | 7.539 [ns] ± 1.901 [ns]    |
-| Fibonacci(10) | 654.097 [ns] ± 3.377 [ns]  |
-| Fibonacci(20) | 80.419 [μs] ± 499.973 [ns] |
+### Optimized Implementation
+| Benchmark     |         Mean Time / Iteration |
+|:--------------|------------------------------:|
+| Fibonacci(1)  | `  5.697 [ns] ± 300.938 [ps]` |
+| Fibonacci(5)  | `  9.700 [ns] ± 192.220 [ps]` |
+| Fibonacci(10) | ` 14.575 [ns] ± 355.798 [ps]` |
 
-#### Optimized Implementation
-| Benchmark     | Mean Time / Iteration    |
-|:--------------|:-------------------------|
-| Fibonacci(1)  | 14.370 [ns] ± 1.266 [ns] |
-| Fibonacci(10) | 23.526 [ns] ± 1.961 [ns] |
-| Fibonacci(20) | 42.985 [ns] ± 1.793 [ns] |
-
-#### Changes
-| Benchmark     | New Mean Time / Iteration | Old Mean Time / Iteration  | Difference |
-|:--------------|:--------------------------|:---------------------------|:-----------|
-| Fibonacci(1)  | 14.370 [ns] ± 1.266 [ns]  | 7.539 [ns] ± 1.901 [ns]    | Slower!    |
-| Fibonacci(10) | 23.526 [ns] ± 1.961 [ns]  | 654.097 [ns] ± 3.377 [ns]  | Faster!    |
-| Fibonacci(20) | 42.985 [ns] ± 1.793 [ns]  | 80.419 [μs] ± 499.973 [ns] | Faster!    |
+### Changes
+| Benchmark     |         Mean Time / Iteration |     Old Mean Time / Iteration | Change           | Performance Difference |
+|:--------------|------------------------------:|------------------------------:|:-----------------|-----------------------:|
+| Fibonacci(1)  | `  5.697 [ns] ± 300.938 [ps]` | `890.845 [ps] ± 106.758 [ps]` | ~6.4× **Slower** |                +539.5% |
+| Fibonacci(5)  | `  9.700 [ns] ± 192.220 [ps]` | ` 71.964 [ns] ±   5.057 [ns]` | ~7.4× _Faster_   |                 -86.5% |
+| Fibonacci(10) | ` 14.575 [ns] ± 355.798 [ps]` | `838.539 [ns] ±  18.815 [ns]` | ~57.5× _Faster_  |                 -98.3% |

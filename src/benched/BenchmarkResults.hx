@@ -41,7 +41,7 @@ abstract BenchmarkResults(Array<Float>) {
 
     /**
      Create a new result, which is a list of timings in seconds
-     @param results 
+     @param results
     **/
     function new(results: Array<Float>) {
         this = results;
@@ -69,6 +69,16 @@ abstract BenchmarkResults(Array<Float>) {
         return t >= t_table;
     }
 
+    /**
+     Calculate the % difference (0―100) between this benchmark and the other,
+     using the other as the basis for comparison
+     @param other the other / old benchmark to compare against
+     @return Float
+     **/
+    public function percentDifference(other: BenchmarkResults): Float {
+        return 100.0 * (mean - other.mean) / other.mean;
+    }
+
     function get_mean(): Float {
         var sum: Float = 0;
         for(result in this) {
@@ -90,8 +100,13 @@ abstract BenchmarkResults(Array<Float>) {
         return sum / this.length;
     }
 
-    // https://stackoverflow.com/a/23785753
-    static function floatToStringPrecision(n:Float, prec:Int){
+    /**
+     Utility to convert a float to a given precision with padded 0's
+     @param n the number to convert
+     @param prec the number of decimal places to display
+     @see https://stackoverflow.com/a/23785753
+     **/
+    public static function floatToStringPrecision(n:Float, prec:Int){
         n = Math.round(n * Math.pow(10, prec));
         var str = ''+n;
         var len = str.length;
@@ -111,14 +126,20 @@ abstract BenchmarkResults(Array<Float>) {
         return Math.log(x) / Math.log(10);
     }
 
-    static function display_eng(x: Float, unit: String): String {
+    /**
+     Given a number, format it in [engineering notation](https://en.wikipedia.org/wiki/Engineering_notation)
+     @param x The number to format
+     @param unit The base SI units of the number ("s", "g", etc)
+     @return String
+     **/
+    static function displayEng(x: Float, unit: String): String {
         // split into mantissa and exponent
         var exp: Float = Math.ffloor(log10(x));
         var mant: Float = x / (Math.pow(10, exp));
-        
+
         // convert back to original scale
         var x: Float = mant * Math.pow(10.0, exp);
-        
+
         // group exponent by factors of 1000
         var p: Int = Math.floor(log10(x));
         var p3: Int = Math.floor(p / 3);
@@ -128,7 +149,11 @@ abstract BenchmarkResults(Array<Float>) {
         var suffixes: Array<String> = ["y", "z", "a", "f", "p", "n", "μ", "m", "", "k", "M", "G", "T", "P", "E", "Z", "Y"];
         var suffix = suffixes[p3 + 8];
 
-        return '${floatToStringPrecision(value, 3)} [$suffix$unit]';
+        // left-pad it with non-breaking spaces so eveything lines up nicely
+        var number: String = floatToStringPrecision(value, 3);
+        number = StringTools.lpad(number, " ", 3 + 1 + 3);
+
+        return '$number [$suffix$unit]';
     }
 
     /**
@@ -136,6 +161,6 @@ abstract BenchmarkResults(Array<Float>) {
      @return String
     **/
     public function toString(): String {
-        return '${display_eng(mean, "s")} ± ${display_eng(std, "s")}';
+        return '${displayEng(mean, "s")} ± ${displayEng(std, "s")}';
     }
 }

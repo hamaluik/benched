@@ -19,10 +19,15 @@ package benched;
 import haxe.ds.ArraySort;
 import haxe.Json;
 import haxe.Timer;
-import haxe.ds.StringMap;
 using Lambda;
 using StringTools;
- 
+
+private enum TableAlignment {
+    Left;
+    Center;
+    Right;
+}
+
 /**
  Utility to run benchmarks and collect samples
 **/
@@ -32,23 +37,23 @@ class Benched {
      less time than this, it will be repeated until it this time is completed
     **/
     var minSecondsPerSample: Float;
- 
+
     /**
      How many samples we must collect from each benchmark until we are satisfied
      that we have a respresentative population
     **/
     var samplesPerBenchmark: Int;
- 
+
     /**
-     All our benchmarks
+     All our benchmarks (an `Array` instead of `haxe.ds.StringMap` in order to preserve order)
     **/
-    var benchmarks: StringMap<BenchmarkResults>;
- 
+    var benchmarks: Array<{name: String, results: BenchmarkResults}>;
+
     /**
      Whether or not to print progress information
     **/
     var verbose: Bool;
- 
+
     /**
      Create a new benchmark suite
      @param minSecondsPerSample how much time must accumulate by repeating the benchmark until a sample is counted
@@ -59,9 +64,9 @@ class Benched {
         this.minSecondsPerSample = minSecondsPerSample;
         this.samplesPerBenchmark = samplesPerBenchmark;
         this.verbose = verbose;
-        this.benchmarks = new StringMap();
+        this.benchmarks = [];
     }
- 
+
     inline function stamp(): Float {
         #if (sys || hxnodejs)
         return Sys.cpuTime();
@@ -69,7 +74,7 @@ class Benched {
         return Timer.stamp();
         #end
     }
- 
+
     function print(s: String): Void {
         #if (sys || hxnodejs)
         Sys.print(s);
@@ -104,7 +109,7 @@ class Benched {
 
         // first test the degenerate case where the execution time is too small
         // to measure
-        if(verbose) println('[Bencher]($name): calculating sample iterations');
+        if(verbose) println('[Benched]($name): calculating sample iterations');
         var startTime: Float = stamp();
         f();
         var endTime: Float = stamp();
@@ -112,7 +117,7 @@ class Benched {
         if(endTime - startTime == 0.0) {
             // we can't measure the execution because the system isn't accurate
             // enough, so do the somewhat innacurate way of repeating a ton of times
-            if(verbose) println('[Bencher]($name): warning: degenerate case, your function is too fast!');
+            if(verbose) println('[Benched]($name): warning: degenerate case, your function is too fast!');
             startTime = stamp();
             do {
                 f();
@@ -133,11 +138,11 @@ class Benched {
                 iterationsPerSample++;
             }
         }
-        if(verbose) println('[Bencher]($name): ${iterationsPerSample} iterations required to take ${minSecondsPerSample} sample');
+        if(verbose) println('[Benched]($name): ${iterationsPerSample} iterations required to take ${minSecondsPerSample} sample');
 
         // ok, now we know how many times we need to run in order to get a sample,
         // collect our samples!
-        if(verbose) println('[Bencher]($name): ${iterationsPerSample} running benchmark...');
+        if(verbose) println('[Benched]($name): ${iterationsPerSample} running benchmark...');
         var samples: Array<Float> = [];
         var printMod: Int = Std.int(samplesPerBenchmark / 10);
         for(i in 0...this.samplesPerBenchmark) {
@@ -145,54 +150,61 @@ class Benched {
             for(_ in 0...iterationsPerSample) f();
             var endTime: Float = stamp();
             samples.push((endTime - startTime) / iterationsPerSample);
-            if(i % printMod == 0 && verbose) print('\r[Bencher]($name): ${Math.round((i + 1) / samplesPerBenchmark * 100)}%');
+            if(i % printMod == 0 && verbose) print('\r[Benched]($name): ${Math.round((i + 1) / samplesPerBenchmark * 100)}%');
         }
-        if(verbose) println('\n[Bencher]($name): Completed!');
-        
+        if(verbose) println('\n[Benched]($name): Completed!');
+
         // and store the result
         var results = new BenchmarkResults(samples);
-        this.benchmarks.set(name, results);
+        this.benchmarks.push({name: name, results: results});
         return results;
     }
 
-    function formatReport(benches: Array<{name: String, results: BenchmarkResults}>): String {
-        var columnAWidth: Int = 0;
-        var columnBWidth: Int = 0;
-        for(bench in benches) {
-            if(bench.name.length > columnAWidth) columnAWidth = bench.name.length;
-            if(bench.results.toString().length > columnBWidth) columnBWidth = bench.results.toString().length;
-        }
-        var s: String = "";
-        s += '| ${"Benchmark".rpad(" ", columnAWidth)} | ${"Mean Time / Iteration".rpad(" ", columnBWidth)} |\n';
-        s += '|:${"".rpad("-", columnAWidth)}-|:${"".rpad("-", columnBWidth)}-|\n';
-        for(bench in benches) {
-            s += '| ${bench.name.rpad(" ", columnAWidth)} | ${bench.results.toString().rpad(" ", columnBWidth)} |\n';
-        }
-        return s;
-    }
+    static function formatTable(headers: Array<String>, alignments: Array<TableAlignment>, rows: Array<Array<String>>): String {
+        final widths: Array<Int> = headers.mapi(function(column: Int, header: String): Int {
+            function max(a: Int, b: Int): Int {
+                return a > b ? a : b;
+            }
+            return rows.map((r) -> r[column].length).fold(max, header.length);
+        });
 
-    function formatReportWithChanges(benches: Array<{name: String, results: BenchmarkResults}>, old: StringMap<BenchmarkResults>, differences: StringMap<String>): String {
-        var columnAWidth: Int = "Benchmark".length;
-        var columnBWidth: Int = "New Mean Time / Iteration".length;
-        var columnCWidth: Int = "Old Mean Time / Iteration".length;
-        var columnDWidth: Int = "Difference".length;
-        for(bench in benches) {
-        if(bench.name.length > columnAWidth) columnAWidth = bench.name.length;
-        if(bench.results.toString().length > columnBWidth) columnBWidth = bench.results.toString().length;
+        var table: String = "";
+
+        // first the headers
+        for(i in 0...headers.length) {
+            table += switch(alignments[i]) {
+                case Left, Center: '| ${headers[i].rpad(" ", widths[i])} ';
+                case Right:        '| ${headers[i].lpad(" ", widths[i])} ';
+            };
         }
-        for(o in old.iterator()) {
-        if(o.toString().length > columnCWidth) columnCWidth = o.toString().length;
+        table += "|\n";
+
+        // now alignments
+        for(i in 0...alignments.length) {
+            var leftChar: String = switch(alignments[i]) {
+                case Left, Center: ":";
+                case Right: "-";
+            };
+            var rightChar: String = switch(alignments[i]) {
+                case Left: "-";
+                case Right, Center: ":";
+            };
+            table += "|" + leftChar + StringTools.rpad("", "-", widths[i]) + rightChar;
         }
-        for(diff in differences.iterator()) {
-        if(diff.length > columnDWidth) columnDWidth = diff.length;
+        table += "|\n";
+
+        // now the rows
+        for(row in rows) {
+            for(i in 0...row.length) {
+                table += switch(alignments[i]) {
+                    case Left, Center: '| ${row[i].rpad(" ", widths[i])} ';
+                    case Right:        '| ${row[i].lpad(" ", widths[i])} ';
+                };
+            }
+            table += "|\n";
         }
-        var s: String = "";
-        s += '| ${"Benchmark".rpad(" ", columnAWidth)} | ${"New Mean Time / Iteration".rpad(" ", columnBWidth)} | ${"Old Mean Time / Iteration".rpad(" ", columnCWidth)} | ${"Difference".rpad(" ", columnDWidth)} |\n';
-        s += '|:${"".rpad("-", columnAWidth)}-|:${"".rpad("-", columnBWidth)}-|:${"".rpad("-", columnCWidth)}-|:${"".rpad("-", columnDWidth)}-|\n';
-        for(bench in benches) {
-        s += '| ${bench.name.rpad(" ", columnAWidth)} | ${bench.results.toString().rpad(" ", columnBWidth)} | ${old.get(bench.name).toString().rpad(" ", columnCWidth)} | ${differences.get(bench.name).rpad(" ", columnDWidth)} |\n';
-        }
-        return s;
+
+        return table;
     }
 
     /**
@@ -200,38 +212,69 @@ class Benched {
     @return String
     **/
     public function generateReport(): String {
-        var benches: Array<{name: String, results: BenchmarkResults}> = [for(kv in benchmarks.keyValueIterator()) {name: kv.key, results: kv.value}];
-        ArraySort.sort(benches, (a, b) -> Reflect.compare(a.name, b.name));
-        return formatReport(benches);
+        final benches: Array<Array<String>> = this.benchmarks.map((b) -> [
+            b.name,
+            '`${b.results.toString()}`',
+        ]);
+        return formatTable(
+            ["Benchmark", "Mean Time / Iteration"],
+            [Left, Right],
+            benches
+        );
     }
 
     /**
     If you change your code and generate a new benchmark, use this to compare the changes to see if the changes had
     a statistically significant effect. Generally this is done by serializing a `Benched` instance, changing the code,
-    re-running benchmarks, and then deserializing the old benchmarks, and supplying them to this function
+    re-running benchmarks, and then deserializing the old benchmarks, and supplying them to this function. This generates
+    a [Markdown table](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) similar to `generateReport()`
+    but with more columns of details.
     @param old The previous run of the same benchmarks, with possibly different implementations
     @return String
     **/
     public function generateComparisonReport(old: Benched): String {
-        var benches: Array<{name: String, results: BenchmarkResults}> = [for(kv in benchmarks.keyValueIterator()) {name: kv.key, results: kv.value}];
-        ArraySort.sort(benches, (a, b) -> Reflect.compare(a.name, b.name));
-        var differences: StringMap<String> = new StringMap();
-        
-        for(bench in benches) {
-        if(old.benchmarks.exists(bench.name)) {
-            var different: Bool = bench.results.isMeanDifferent(old.benchmarks.get(bench.name));
-            differences.set(bench.name, switch([different, bench.results.mean < old.benchmarks.get(bench.name).mean]) {
-                case [true, true]: "Faster!";
-                case [true, false]: "Slower!";
-                case [false, _]: "No Change";
-            });
-        }
-        else {
-            differences.set(bench.name, "—");
-        }
-    }
+        // first get a list of our benchmarks
+        final benches: Array<{
+            name: String,
+            results: BenchmarkResults,
+            oldResults: Null<BenchmarkResults>,
+        }> = [for(bench in this.benchmarks) {
+            name: bench.name,
+            results: bench.results,
+            oldResults: {
+                var oldResults = old.benchmarks.find((b) -> b.name == bench.name);
+                if(oldResults == null) null;
+                else oldResults.results;
+            }
+        }];
 
-    return formatReportWithChanges(benches, old.benchmarks, differences);
+        // now format them
+        final benches: Array<Array<String>> = benches.map((b) -> [
+            b.name,
+            '`${b.results.toString()}`',
+            b.oldResults == null ? '—' : '`${b.oldResults.toString()}`',
+            if(b.oldResults != null) {
+                switch([b.results.mean < b.oldResults.mean, b.results.isMeanDifferent(b.oldResults)]) {
+                    case [true, true]: '~${BenchmarkResults.floatToStringPrecision(b.oldResults.mean / b.results.mean, 1)}× _Faster_';
+                    case [false, true]: '~${BenchmarkResults.floatToStringPrecision(b.results.mean / b.oldResults.mean, 1)}× **Slower**';
+                    case [_, false]: "No Change";
+                }
+            }
+            else {
+                "—";
+            },
+            if(b.oldResults != null) {
+                var change = b.results.percentDifference(b.oldResults);
+                (change >= 0 ? "+" : "") + BenchmarkResults.floatToStringPrecision(change, 1) + "%";
+            }
+            else {
+                "—";
+            }
+        ]);
+        return formatTable(
+            ["Benchmark", "Mean Time / Iteration", "Old Mean Time / Iteration", "Change", "Performance Difference"],
+            [Left, Right, Right, Left, Right],
+            benches
+        );
     }
  }
- 

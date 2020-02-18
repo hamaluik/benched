@@ -2,5 +2,6 @@
 -cp samples
 -dce full
 -main Fib
---hl bin/fib.hl
---cmd hl bin/fib.hl
+--js bin/fib.js
+-lib hxnodejs
+--cmd node bin/fib.js

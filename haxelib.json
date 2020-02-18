@@ -5,8 +5,8 @@
   "classPath": "src",
   "tags": ["cross", "utility"],
   "description": "A statistics-based benchmarking tool for Haxe, inspired by criterion",
-  "version": "0.1.0",
-  "releasenote": "Initial release",
+  "version": "0.2.0",
+  "releasenote": "Better output formatting, especially for changes",
   "contributors": ["hamaluik"],
   "dependencies": {}
 }
