@@ -33,8 +33,8 @@ class Fib {
         // let's pretend we ran this before writing `fibonacci_optimized`
         var bencher = new Benched();
         bencher.benchmark("Fibonacci(1)", () -> fibonacci_naive(1));
+        bencher.benchmark("Fibonacci(5)", () -> fibonacci_naive(5));
         bencher.benchmark("Fibonacci(10)", () -> fibonacci_naive(10));
-        bencher.benchmark("Fibonacci(20)", () -> fibonacci_naive(20));
         var s = new Serializer();
         s.serialize(bencher);
         sys.io.File.saveContent("_fib_naive.hxs", s.toString());
@@ -47,8 +47,8 @@ class Fib {
         // benchmark the results
         var bencher = new Benched();
         bencher.benchmark("Fibonacci(1)", () -> fibonacci_optimized(1));
+        bencher.benchmark("Fibonacci(5)", () -> fibonacci_optimized(5));
         bencher.benchmark("Fibonacci(10)", () -> fibonacci_optimized(10));
-        bencher.benchmark("Fibonacci(20)", () -> fibonacci_optimized(20));
         Sys.println('### Optimized Implementation');
         Sys.println(bencher.generateReport());
 

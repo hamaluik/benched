@@ -30,16 +30,15 @@ class Fib {
     public static function main() {
         var bencher = new Benched();
         bencher.benchmark("Fibonacci(1)", () -> fibonacci(1));
-        bencher.benchmark("Fibonacci(20)", () -> fibonacci(20));
-        bencher.benchmark("Fibonacci(100)", () -> fibonacci(100));
+        bencher.benchmark("Fibonacci(5)", () -> fibonacci(5));
+        bencher.benchmark("Fibonacci(10)", () -> fibonacci(10));
         Sys.println('### Naive Implementation');
         Sys.println(bencher.generateReport());
-        Sys.println(bencher.generateComparisonReport(oldBencher));
 
         // save the results for later
         var s = new Serializer();
         s.serialize(bencher);
-        sys.io.File.saveContent("_fib.hxs", s.toString());
+        sys.io.File.saveContent("_fib_naive.hxs", s.toString());
     }
 }
 ```
@@ -75,8 +74,8 @@ class Fib {
         // benchmark the results
         var bencher = new Benched();
         bencher.benchmark("Fibonacci(1)", () -> fibonacci_naive(1));
-        bencher.benchmark("Fibonacci(20)", () -> fibonacci_naive(20));
-        bencher.benchmark("Fibonacci(100)", () -> fibonacci_naive(100));
+        bencher.benchmark("Fibonacci(5)", () -> fibonacci_naive(5));
+        bencher.benchmark("Fibonacci(10)", () -> fibonacci_naive(10));
         Sys.println('### Optimized Implementation');
         Sys.println(bencher.generateReport());
 
